@@ -18,7 +18,8 @@
 5)
 
 ## Le jour de l'évenement
-Arrivée sur place **17h** - Fin de l'évenement **6h**.
+Arrivée sur place **17h** - Fin de l'évenement **6h**.  
+**POSE 30MIN OBLIGATOIRE TOUTES LES 2H-3H (Il faut savoir faire des poses pour les yeux et pour le cerveau des fois)**
 
 **17h-18h30** : Debrief sur le projet et ce qu'on doit faire, ce qui est demandé, où on va, et surtout comment on le fait.  
 
