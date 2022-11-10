@@ -27,4 +27,6 @@ jobs:
 
       # Run Angular CI
       - name: Angular Full CI
-        uses: colbyhill21/angular-full-ci@v1.0
+        uses: colbyhill21/angular-full-ci/@v1.0
+        with:
+          testcommand: run test:ci
