@@ -21,9 +21,9 @@
 Arrivée sur place **17h** - Fin de l'évenement **6h**.  
 **POSE 30MIN OBLIGATOIRE TOUTES LES 2H-3H (Il faut savoir faire des poses pour les yeux et pour le cerveau des fois)**
 
-**17h-18h30** : Debrief sur le projet et ce qu'on doit faire, ce qui est demandé, où on va, et surtout comment on le fait.  
+**17h** : Debrief sur le projet et ce qu'on doit faire, ce qui est demandé, où on va, et surtout comment on le fait.  
 
-**18h30-19h30** : On commence petit à petit.
+**18h30** : On commence petit à petit.
 - Frontend : Pages, services, ...
 - Backend : Classes, routes, ...
 - Chef de projet : Création des taches
