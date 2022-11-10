@@ -24,7 +24,7 @@ git pull
 
 ## Changer de branche
 ```sh
-git checkout mabranche
+git checkout [...]/mabranche
 ```
 
 ## Accéder à une branche distante
