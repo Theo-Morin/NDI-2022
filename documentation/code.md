@@ -24,7 +24,7 @@ public void maFonction(Param premierParametre) {/* contenu */}
 public void maFonction(Param premierParametre, Param secondParametre) {/* contenu */}
 ```
 ```java
-public vid maFonction(
+public void maFonction(
     Param premierParametre,
     Param secondParametre,
     Param troisemeParametre,

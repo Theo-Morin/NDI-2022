@@ -88,5 +88,9 @@ Et ensuite continuez le rebase :
 git rebase --continue
 ```
 
+## Créer une pull request
+Lorsque vous avez push votre branch, un message sur l'interface du projet github s'affichera et vous proposera de créer une pull request.
+
+Cliquez dessus et ajoutez comme titre le nom de la tache en cour préfixé de **[Frontend]**, **[Backend]** ou **[Infra]** selon la nature de la tache.
 
 ### En cas de questions supplémentaires le jour de l'evenement, référez-vous à votre Lead.
