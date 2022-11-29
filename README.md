@@ -8,7 +8,6 @@
 - [Renseignez vos routes (version frontend)](documentation/routes/backend.md)
 
 ## Project Team
-- Théo Morin : Chef de projet
 
 ## Nos défis
 1)
