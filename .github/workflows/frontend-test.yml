@@ -1,0 +1,25 @@
+name: CI Tests on frontend
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  reamde-update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Install Node packages
+        run: |
+          npm --prefix frontend i
+
+      - name: Run tests
+        run: |
+          npm --prefix frontend run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
