@@ -7,7 +7,7 @@ on:
       - main
 
 jobs:
-  reamde-update:
+  ng-test:
     runs-on: ubuntu-latest
 
     steps:
