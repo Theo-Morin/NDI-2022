@@ -6,11 +6,18 @@ import { HomeRoutingModule } from './home-routing.module';
 import { AssociationsComponent } from './components/associations/associations.component';
 import { AssociationComponent } from './components/associations/components/association/association.component';
 import { FaqComponent } from './components/faq/faq.component';
+import { TemoignageComponent } from './components/temoignage/temoignage.component';
+import { FormComponent } from './components/temoignage/form/form.component';
+import { TemoignageTemoignageComponent } from './components/temoignage/temoignage/temoignage.component';
 
 
 @NgModule({
   declarations: [
     HomeComponent,
+    FaqComponent,
+    TemoignageComponent,
+    FormComponent,
+    TemoignageTemoignageComponent,
     AssociationsComponent,
     AssociationComponent,
     FaqComponent,
