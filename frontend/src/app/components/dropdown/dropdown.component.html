@@ -1,0 +1,9 @@
+<div class="dropdown">
+    <div class="dropdown__header" (click)="deploy = !deploy">
+        <h2>{{title}}</h2>
+        <i class="icon chevron" [class.icon-deploy]="deploy"></i>
+    </div>
+    <div class="dropdown__content" *ngIf="deploy">
+            {{content}}
+    </div>
+</div>
