@@ -1,0 +1,30 @@
+@import "src/styles/colors";
+@import "src/styles/fonts";
+
+.disclaimer {
+  padding: 10px;
+  width: 90%;
+  margin: auto;
+  background-color: $disclaimer-color;
+  border-radius: 5px;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+
+  .disclaimer-icon {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: black 2px solid;
+    display: flex;
+
+    span {
+      font-size: 14px;
+      margin: auto;
+    }
+  }
+
+  .content {
+    flex: 1;
+  }
+}
