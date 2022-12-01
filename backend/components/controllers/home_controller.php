@@ -1,8 +1,9 @@
 <?php
 
 $uc1 = isset($_GET['uc1']) ? htmlspecialchars($_GET['uc1']) : '';
-if($uc1 === '') $uc1 = 'home';
+
 switch($uc1) {
+    case '':
     case 'home':
         echo '{}';
     break;
@@ -13,6 +14,10 @@ switch($uc1) {
 
     case 'quiz':
         require 'quiz_controller.php';
+    break;
+
+    case 'faq':
+        require 'faq_controller.php';
     break;
 
     default:
