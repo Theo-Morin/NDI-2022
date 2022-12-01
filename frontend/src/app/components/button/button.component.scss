@@ -1,0 +1,37 @@
+@import "src/styles/colors";
+@import "src/styles/fonts";
+
+button {
+    outline: 0;
+    margin:0;
+    padding: 0;
+    border:none;
+}
+
+.btn {
+    background:$primary-color;
+    color:#FFF;
+    font-family:$primary-font;
+    border-radius: 3px;
+    padding:10px 20px;
+
+    &--secondary {
+        background:$secondary-color;
+    }
+
+    &--success {
+        background:$success-color;
+    }
+
+    &--small {
+        padding:5px 10px;
+    }
+
+    &--large {
+        padding:15px 30px;
+    }
+
+    &--full {
+        width:100%;
+    }
+}
