@@ -2,12 +2,18 @@
     class="btn"
     [class]="classes"
     [style.font-size]="fontSize"
+    [style.font-weight]="fontWeight"
     [ngClass]="{
         'btn--primary': color === 'primary',
         'btn--secondary': color === 'secondary',
         'btn--success': color === 'success',
         'btn--small': size === 'small',
-        'btn--large': size === 'large'
+        'btn--large': size === 'large',
+        'btn--full': size === 'full',
+        'btn--left': align === 'left',
+        'btn--right': align === 'right',
+        'btn--center': align === 'center',
+        'btn--long': size === 'long'
     }"
 >
     <ng-content></ng-content>

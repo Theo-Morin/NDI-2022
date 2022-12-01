@@ -7,6 +7,9 @@ const AuthModule = () =>
 const HomeModule = () =>
   import("./pages/home/home.module").then((m) => m.HomeModule);
 
+const QuizModule = () =>
+  import("./pages/quiz/quiz.module").then((m) => m.QuizModule);
+
 
 const routes: Routes = [
   { path: "", redirectTo: "/home", pathMatch: "full" },
@@ -17,6 +20,10 @@ const routes: Routes = [
   {
     path: "auth",
     loadChildren: AuthModule,
+  },
+  {
+    path: "quiz",
+    loadChildren: QuizModule,
   }
 ];
 

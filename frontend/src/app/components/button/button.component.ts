@@ -10,7 +10,8 @@ export enum ButtonSize {
   Small = 'small',
   Medium = 'medium',
   Large = 'large',
-  Full = 'full'
+  Full = 'full',
+  Long = 'long'
 };
 
 @Component({
@@ -23,6 +24,8 @@ export class ButtonComponent implements OnInit {
   @Input() size: ButtonSize;
   @Input() classes: string;
   @Input() fontSize: string = '14px';
+  @Input() fontWeight: string = '500';
+  @Input() align: 'center' | 'left' | 'right' = 'center';
 
   constructor() { }
 

@@ -4,10 +4,7 @@ class Quiz {
     public static function getQuizzes() {
         $queryStr = 'SELECT *, (SELECT COUNT(*) from quiz_question where quizId = id) AS questionCount FROM quiz';
         $stmt = Database::getInstance()->query($queryStr);
-        $quizzes = [];
-        while ($quiz = $stmt->fetchObject()) {
-            $quizzes[] = $quiz;
-        }
+        $quizzes = $stmt->fetchAll(PDO::FETCH_OBJ);
         return $quizzes;
     }
 
@@ -55,9 +52,6 @@ class QuizQuestion {
     public function loadAnswers() {
         $stmt = Database::getInstance()->prepare('SELECT * FROM quiz_answer WHERE quizId = ? AND questionPos = ? ORDER BY pos');
         $stmt->execute([$this->mainInfo->quizId, $this->mainInfo->pos]);
-        $this->answers = [];
-        while ($answerData = $stmt->fetchObject()) {
-            $this->answers[] = $answerData;
-        }
+        $this->answers = $stmt->fetchAll(PDO::FETCH_OBJ);
     }
 }

@@ -5,6 +5,7 @@ import { HomeComponent } from './home.component';
 import { HomeRoutingModule } from './home-routing.module';
 import { AssociationsComponent } from './components/associations/associations.component';
 import { AssociationComponent } from './components/associations/components/association/association.component';
+import { FaqComponent } from './components/faq/faq.component';
 
 
 @NgModule({
@@ -12,6 +13,7 @@ import { AssociationComponent } from './components/associations/components/assoc
     HomeComponent,
     AssociationsComponent,
     AssociationComponent,
+    FaqComponent,
   ],
   imports: [
     CommonModule,

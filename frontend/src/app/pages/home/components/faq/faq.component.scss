@@ -1,0 +1,25 @@
+@import "../../../../../styles/colors";
+@import "../../../../../styles/fonts";
+@import "../../../../../styles/icons";
+
+.faq {
+    padding: 40px 0;
+    width: 100%;
+    text-align: center;
+    background:$secondary-color;
+
+    h2 {
+        color:white;
+        margin:0 0 5px 0;
+        font-family: $primary-font;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 24px;
+
+    }
+
+    &__content {
+        max-width: 1200px;
+        margin: 40px 50px;
+    }
+}
