@@ -10,7 +10,7 @@ class User {
             $this->login($username, $passwd);
         }
         else {
-            $token = htmlspecialchars($_SESSION['userToken']);
+            $token = constant('personalToken');
             if($this->isLogged()) {
                 $email = $token['payload']['email'];
                 $userId = $token['payload']['userId'];
@@ -34,7 +34,7 @@ class User {
         $req->execute(array($username, $password));
         if($req->RowCount() == 1) {
             $result = $req->Fetch();
-            $token = JWToken::generate(["userId" => $result['userId'],"email" => $result['email'], "userAgent" => $_SERVER['HTTP_USER_AGENT']]);
+            $token = JWToken::generate(['userId' => $result['userId'],'email' => $result['email'], 'userAgent' => $_SERVER['HTTP_USER_AGENT']]);
             return $token;
         }
         return false;
@@ -52,8 +52,8 @@ class User {
         $req = Database::getInstance()->prepare('SELECT * FROM users WHERE userId = ?');
         $req->execute(array($this->userId));
         $res = $req->Fetch();
-        $res['passwd'] = "NONE";
-        $res['forgotPasswordToken'] = "NONE";
+        $res['passwd'] = 'NONE';
+        $res['forgotPasswordToken'] = 'NONE';
         return $req->Fetch();
     }
 
@@ -65,29 +65,29 @@ class User {
     }
     
     public function editProfile($email = false, $pseudonyme = false, $firstName = false, $lastName = false, $phoneNumber = false) {
-        $reqContent = "UPDATE users SET isForgot = 0";
+        $reqContent = 'UPDATE users SET isForgot = 0';
         $ar = array();
         if($email) {
             $ar[] = $email;
-            $reqContent .= ", email = ? ";
+            $reqContent .= ', email = ? ';
         }
         if($pseudonyme) {
             $ar[] = $pseudonyme;
-            $reqContent .= ", pseudonyme = ?";
+            $reqContent .= ', pseudonyme = ?';
         }
         if($firstName) {
             $ar[] = $firstName;
-            $reqContent .= ", firstName = ?";
+            $reqContent .= ', firstName = ?';
         }
         if($lastName) {
             $ar[] = $lastName;
-            $reqContent .= ", lastName = ?";
+            $reqContent .= ', lastName = ?';
         }
         if($phoneNumber) {
             $ar[] = $phoneNumber;
-            $reqContent .= ", phoneNumber = ?";
+            $reqContent .= ', phoneNumber = ?';
         }
-        $reqContent .= " WHERE userId = ?";
+        $reqContent .= ' WHERE userId = ?';
         $ar[] = $this->userId;
 
         $req = Database::getInstance()->prepare($reqContent);

@@ -19,7 +19,7 @@ class BBCode
         '~\[s\](.*?)\[/s\]~s',
         '~\[right\](.*?)\[/right\]~s',
         '~\[video\](.*?)\[/video\]~s',
-        '~\[iframe\](.*?)\[/iframe\]~s'
+        '~\[iframe\](.*?)\[/iframe\]~s',
     );
     
     // HTML tags to replace BBcode
@@ -39,8 +39,8 @@ class BBCode
         '<strike>$1</strike>',
         '<p style="text-align:right;">$1</p>',
         '<iframe width="560" height="315" src="https://www.youtube.com/embed/$1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
-        '<iframe width="300" height="380" src="$1" frameborder="0"></iframe>'
-        );
+        '<iframe width="300" height="380" src="$1" frameborder="0"></iframe>',
+    );
 
     // Replacing the BBcodes with corresponding HTML tags
     $content = preg_replace($find,$replace,$content);
@@ -49,5 +49,3 @@ class BBCode
     return $content;
   }
 }
-
-?>

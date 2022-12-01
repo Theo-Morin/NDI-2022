@@ -15,19 +15,19 @@
  */
 
 // get token bearer from header
-$personalToken = isset($_SERVER['HTTP_AUTHORIZATION']) ? htmlspecialchars($_SERVER['HTTP_AUTHORIZATION']) : null;
+define('personalToken', isset($_SERVER['HTTP_AUTHORIZATION']) ? htmlspecialchars($_SERVER['HTTP_AUTHORIZATION']) : null);
 
 header('Content-Type: application/json');
 date_default_timezone_set('Europe/Paris');
 
 // Define usuables variables
-require getcwd() . "/config/define.php";
+require getcwd() . '/config/define.php';
 
 // Require function library
 require getcwd() . '/config/func.php';
 
 // Include your classes
-require getcwd() . "/config/classes_require.php";
+require getcwd() . '/config/classes_require.php';
 
 // Init controllers
 require getcwd() . '/components/controllers/home_controller.php';

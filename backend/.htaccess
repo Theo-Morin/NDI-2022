@@ -1,6 +1,7 @@
-Options -MultiViews -Indexes
 RewriteEngine on
 
-RewriteRule ^([-a-zA-Z0-9_+]+)/?$ index.php?uc1=$1 [L]
-RewriteRule ^([-a-zA-Z0-9_+]+)/([-a-zA-Z0-9_+]+)/?$ index.php?uc1=$1&uc2=$2 [L]
-RewriteRule ^([-a-zA-Z0-9_+]+)/([-a-zA-Z0-9_+]+)/([-a-zA-Z0-9_+]+)/?$ index.php?uc1=$1&uc2=$2&uc3=$3 [L]
+RewriteBase /
+RewriteRule ^([^/:?]+)/?$ index.php?uc1=$1 [L]
+RewriteRule ^([^/:?]+)/([^/:?]+)/?$ index.php?uc1=$1&uc2=$2 [L]
+RewriteRule ^([^/:?]+)/([^/:?]+)/([^/:?]+)/?$ index.php?uc1=$1&uc2=$2&uc3=$3 [L]
+RewriteRule ^([^/:?]+)/([^/:?]+)/([^/:?]+)/. home/ [R]
