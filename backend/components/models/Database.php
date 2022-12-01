@@ -5,8 +5,6 @@
 *	$monDatabase qui contiendra l'unique instance de la classe
 */
 class Database {
-    private static $connectionStr = constant('DB_SERVER') . ';' . constant('DB_NAME'),
-        $user = constant('DB_USER'), $passwd = constant('DB_PASSWORD');
     private static $pdo = null;
 
     // Constructeur privé : impossible de créer une instance
@@ -19,7 +17,10 @@ class Database {
  */
     public static function getInstance() {
         if (self::$pdo == null) {
-            self::$pdo = new PDO(self::$connectionStr, self::$user, self::$passwd);
+            $connectionStr = 'mysql:host=' . constant('DB_SERVER') . ';dbname=' . constant('DB_NAME');
+            $user = constant('DB_USER');
+            $passwd = constant('DB_PASSWORD');
+            self::$pdo = new PDO($connectionStr, $user, $passwd);
             self::$pdo->query("SET CHARACTER SET utf8");
             self::$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         }
