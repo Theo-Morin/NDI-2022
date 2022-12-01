@@ -24,7 +24,7 @@ class Quiz {
     }
 
     public function loadQuestions() {
-        $stmt = Database::getInstance()->prepare('SELECT * FROM quiz_question WHERE quizId = ?');
+        $stmt = Database::getInstance()->prepare('SELECT * FROM quiz_question WHERE quizId = ? ORDER BY pos');
         $stmt->execute([$this->mainInfo->id]);
         $this->questions = [];
         while ($questionData = $stmt->fetchObject()) {
@@ -40,20 +40,20 @@ class QuizQuestion {
     public function __construct($param1, $param2 = null) {
         if ($param2 === null) {
             $this->mainInfo = $param1;
-            loadAnswers();
+            $this->loadAnswers();
         } else {
             $stmt = Database::getInstance()->prepare('SELECT * FROM quiz_question WHERE quizId = ? AND pos = ?');
             $stmt->execute([$param1, $param2]);
             $questionData = $stmt->fetchObject();
             if ($questionData !== false) {
                 $this->mainInfo = $questionData;
-                loadAnswers();
+                $this->loadAnswers();
             }
         }
     }
 
     public function loadAnswers() {
-        $stmt = Database::getInstance()->prepare('SELECT * FROM quiz_answer WHERE quizId = ? AND questionPos = ?');
+        $stmt = Database::getInstance()->prepare('SELECT * FROM quiz_answer WHERE quizId = ? AND questionPos = ? ORDER BY pos');
         $stmt->execute([$this->mainInfo->quizId, $this->mainInfo->pos]);
         $this->answers = [];
         while ($answerData = $stmt->fetchObject()) {
