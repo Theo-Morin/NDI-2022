@@ -3,12 +3,14 @@ import { CommonModule } from '@angular/common';
 import { SharedModule } from 'src/app/components/shared.module';
 import { HomeComponent } from './home.component';
 import { HomeRoutingModule } from './home-routing.module';
+import { FaqComponent } from './components/faq/faq.component';
 
 
 
 @NgModule({
   declarations: [
-    HomeComponent
+    HomeComponent,
+    FaqComponent
   ],
   imports: [
     CommonModule,
