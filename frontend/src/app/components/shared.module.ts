@@ -4,6 +4,7 @@ import { InputComponent } from './input/input.component';
 import { ButtonComponent } from './button/button.component';
 import { DisclaimerComponent } from './disclaimer/disclaimer.component';
 import { DropdownComponent } from './dropdown/dropdown.component';
+import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 
 
 
@@ -12,13 +13,15 @@ import { DropdownComponent } from './dropdown/dropdown.component';
     InputComponent,
     ButtonComponent,
     DisclaimerComponent,
-    DropdownComponent
+    DropdownComponent,
+    ProgressBarComponent
   ],
   exports: [
     InputComponent,
     ButtonComponent,
     DisclaimerComponent,
-    DropdownComponent
+    DropdownComponent,
+    ProgressBarComponent
   ],
   imports: [
     CommonModule
