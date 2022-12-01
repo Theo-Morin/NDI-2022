@@ -1,6 +1,6 @@
 <?php
 
-class Youtube
+class YouTube
 {
     private static $key = "";
 

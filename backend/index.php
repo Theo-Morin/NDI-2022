@@ -22,6 +22,7 @@ date_default_timezone_set('Europe/Paris');
 
 // Define usuables variables
 require getcwd() . '/config/define.php';
+require getcwd() . '/config/database.php';
 
 // Require function library
 require getcwd() . '/config/func.php';
