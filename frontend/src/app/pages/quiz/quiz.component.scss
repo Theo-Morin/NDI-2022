@@ -1,0 +1,17 @@
+.quiz {
+    h2 {
+        text-align: center;
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 26px;
+    }
+
+    &__content {
+        padding:10px 100px;
+    }
+
+    &__quiz {
+        margin:15px 0;
+    }
+}
