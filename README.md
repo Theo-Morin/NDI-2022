@@ -17,11 +17,14 @@
 5)
 
 ## Le jour de l'évenement
-Arrivée sur place **17h** - Fin de l'évenement **6h**.
+Arrivée sur place **17h** - Fin de l'évenement **6h**.  
+**POSE 30MIN OBLIGATOIRE TOUTES LES 2H-3H (Il faut savoir faire des poses pour les yeux et pour le cerveau des fois)**  
 
-**17h-18h30** : Debrief sur le projet et ce qu'on doit faire, ce qui est demandé, où on va, et surtout comment on le fait.  
+Un conseil, mettez-vous bien, tout ce qu'il vous faut pour travailler tranquillement, setup, casques/ecouteurs si vous aimez regarder/ecouter quelque chose à côté. Prenez quelques trucs à boire/manger qui vous font plaisir mais sur place il y a café, eau, et même un traiteur pour le repas du soir.
 
-**18h30-19h30** : On commence petit à petit.
+**17h** : Debrief sur le projet et ce qu'on doit faire, ce qui est demandé, où on va, et surtout comment on le fait.  
+
+**18h30** : On commence petit à petit.
 - Frontend : Pages, services, ...
 - Backend : Classes, routes, ...
 - Chef de projet : Création des taches

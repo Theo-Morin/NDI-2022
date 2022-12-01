@@ -24,7 +24,7 @@ git pull
 
 ## Changer de branche
 ```sh
-git checkout mabranche
+git checkout [...]/mabranche
 ```
 
 ## Accéder à une branche distante
@@ -54,12 +54,14 @@ git stash pop
 
 ## Ajouter un fichier au futur commit
 ```sh
-git add *
+# Directement sur vscode avec l'extension Git ou
+git add monfichier
 ```
 
 ## Créer un commit
 Les descriptions de commit doivent être préfixés de "**[Frontend]**" , "**[Backend]**" ou "**[Infra]**" selon la nature de la tache que vous effectuez.
 ```sh
+# Directement sur vscode avec l'extension Git ou
 git commit -m "[Frontend] description du commit"
 ```
 
