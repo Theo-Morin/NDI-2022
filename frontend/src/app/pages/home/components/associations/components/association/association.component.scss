@@ -1,0 +1,36 @@
+a.association {
+  width: 150px;
+  height: 150px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  border-radius: 5px;
+  position: relative;
+  justify-content: center;
+
+  img {
+    align-items: center;
+    width: 100%;
+    margin: auto;
+  }
+
+  h3 {
+    font-size: 25px;
+    color: #000000;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+    display: none;
+  }
+
+  &:hover {
+    img {
+      opacity: 50%;
+    }
+
+    h3 {
+      display: block
+    }
+  }
+}
