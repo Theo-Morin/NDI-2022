@@ -7,13 +7,13 @@ if ($uc2 === null) {
     echo json_encode($testimonies);
 
 } else if ($uc2 == 'new') {
-    if (!isset($_REQUEST['title'])) die(json_encode(['error' => 'You must supply a title']));
-    if (!isset($_REQUEST['date'])) die(json_encode(['error' => 'You must supply a valid date']));
-    if (!isset($_REQUEST['content'])) die(json_encode(['error' => 'You must supply a content']));
+    if (!isset($_POST['title'])) die(json_encode(['error' => 'You must supply a title']));
+    if (!isset($_POST['date'])) die(json_encode(['error' => 'You must supply a valid date']));
+    if (!isset($_POST['content'])) die(json_encode(['error' => 'You must supply a content']));
 
     $author = null;
-    if (isset($_REQUEST['author']) && $_REQUEST['author'] !== '') $author = $_REQUEST['author'];
-    Testimony::create($_REQUEST['title'], $author, $_REQUEST['date'], $_REQUEST['content']);
+    if (isset($_POST['author']) && $_POST['author'] !== '') $author = $_POST['author'];
+    Testimony::create($_POST['title'], $author, $_POST['date'], $_POST['content']);
 
 } else {
     die(json_encode(['error' => 'Invalid route']));
