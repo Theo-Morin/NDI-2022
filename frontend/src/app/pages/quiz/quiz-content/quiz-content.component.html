@@ -1,0 +1,25 @@
+<div class="quiz" *ngIf="!finish; else endOfGame">
+    <h2>Question 1</h2>
+    <div class="quiz__content">
+        <app-progress-bar [progress]="progress"></app-progress-bar>
+        <div class="quiz__quiz">
+            <app-button [size]="buttonSize.Full" fontSize="24px" fontWeight="700" align="left" (click)="responding = true">Réponse 1</app-button>
+        </div>
+        <div class="quiz__quiz">
+            <app-button [size]="buttonSize.Full" fontSize="24px" fontWeight="700" align="left" (click)="responding = true">Réponse 2</app-button>
+        </div>
+        <div class="quiz__quiz">
+            <app-button [size]="buttonSize.Full" fontSize="24px" fontWeight="700" align="left" (click)="responding = true">Réponse 3</app-button>
+        </div>
+        <div class="quiz__quiz">
+            <app-button [size]="buttonSize.Full" fontSize="24px" fontWeight="700" align="left" (click)="responding = true">Réponse 4</app-button>
+        </div>
+        <div class="quiz__next">
+            <app-button [size]="buttonSize.Long" fontWeight="600" *ngIf="responding">Suivant</app-button>
+        </div>
+    </div>
+</div>
+
+<ng-template #endOfGame>
+    <!-- Recap -->
+</ng-template>
