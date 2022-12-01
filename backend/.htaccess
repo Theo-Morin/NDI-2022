@@ -7,6 +7,6 @@ RewriteBase /backend/
 RewriteRule ^([^/:?]+)/([^/:?]+)/([^/:?]+)/. . [R]
 RewriteRule ^.*[^/]$ $0/ [R]
 
-RewriteRule ^([^/:?]+)/$ ?uc1=$1 [L]
-RewriteRule ^([^/:?]+)/([^/:?]+)/$ ?uc1=$1&uc2=$2 [L]
-RewriteRule ^([^/:?]+)/([^/:?]+)/([^/:?]+)/$ ?uc1=$1&uc2=$2&uc3=$3 [L]
+RewriteRule ^([^/:?]+)/$ ?uc1=$1 [QSA,L]
+RewriteRule ^([^/:?]+)/([^/:?]+)/$ ?uc1=$1&uc2=$2 [QSA,L]
+RewriteRule ^([^/:?]+)/([^/:?]+)/([^/:?]+)/$ ?uc1=$1&uc2=$2&uc3=$3 [QSA,L]
