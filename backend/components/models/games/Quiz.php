@@ -1,7 +1,7 @@
 <?php
 
 class Quiz {
-    public static function getQuizzes() {
+    public static function getAll() {
         $queryStr = 'SELECT *, (SELECT COUNT(*) from quiz_question where quizId = id) AS questionCount FROM quiz';
         $stmt = Database::getInstance()->query($queryStr);
         $quizzes = $stmt->fetchAll(PDO::FETCH_OBJ);

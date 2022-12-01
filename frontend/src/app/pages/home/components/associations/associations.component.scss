@@ -1,0 +1,16 @@
+#associations {
+  margin: auto;
+  width: 1000px;
+
+  h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  .associations {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    -webkit-flex-wrap: wrap;
+    justify-content: center;
+  }
+}

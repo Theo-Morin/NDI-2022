@@ -6,26 +6,33 @@ switch($uc1) {
     case '':
     case 'home':
         echo '{}';
-    break;
+        break;
 
     case 'user':
         require 'user_controller.php';
-    break;
+        break;
 
     case 'quiz':
         require 'quiz_controller.php';
-    break;
+        break;
 
     case 'faq':
         require 'faq_controller.php';
-    break;
+        break;
+
+    case 'articles':
+        require 'articles_controller.php';
+        break;
+
+    case 'definitions':
+        require 'definitions_controller.php';
+        break;
 
     case 'organizations':
         require 'organizations_controller.php';
-    break;
+        break;
 
     default:
         http_response_code(404);
         die(json_encode(['error' => 'Page not found']));
-    break;
 }
