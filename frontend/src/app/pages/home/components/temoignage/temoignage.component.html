@@ -1,0 +1,17 @@
+<div class="temoignage">
+    <h2>Témoignages</h2>
+
+    <div class="carousel">
+        <i class="icon chevron chevron-left"></i>
+        <div class="temoignage__content">
+            <app-form *ngIf="formActive; else Temoignage"></app-form>
+            <ng-template #Temoignage>
+                <app-temoignage-temoignage></app-temoignage-temoignage>
+            </ng-template>
+        </div>
+        <i class="icon chevron chevron-right"></i>
+    </div>
+    <div class="align-center">
+        <app-button (click)="formActive = true" [size]="buttonSize.Large" fontWeight="600">Poster mon témoignage</app-button>
+    </div>
+</div>
