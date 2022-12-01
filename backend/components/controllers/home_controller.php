@@ -24,6 +24,10 @@ switch($uc1) {
         require 'organizations_controller.php';
     break;
 
+    case 'definitions':
+        require 'definitions_controller.php';
+    break;
+
     default:
         http_response_code(404);
         die(json_encode(['error' => 'Page not found']));
