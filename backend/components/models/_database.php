@@ -11,12 +11,7 @@ class Database {
     private static $mdp='';
     private static $db;
     private static $unPdo = null;
-    // private static $serveur='Database:host=localhost';
-    // private static $bdd='dbname=simultaux';
-    // private static $user='root';
-    // private static $mdp='';
-    // private static $db;
-    // private static $unPdo = null;
+
 
 //	Constructeur privé, crée l'instance de PDO qui sera sollicitée
 //	pour toutes les méthodes de la classe

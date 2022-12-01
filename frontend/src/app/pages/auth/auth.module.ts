@@ -4,6 +4,7 @@ import { SignInComponent } from './components/sign-in/sign-in.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { AuthComponent } from './auth.component';
 import { SharedModule } from 'src/app/components/shared.module';
+import { AuthRoutingModule } from './auth-routing.module';
 
 
 
@@ -15,7 +16,8 @@ import { SharedModule } from 'src/app/components/shared.module';
   ],
   imports: [
     CommonModule,
-    SharedModule
+    SharedModule,
+    AuthRoutingModule
   ]
 })
 export class AuthModule { }
