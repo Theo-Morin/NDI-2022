@@ -3,13 +3,12 @@
 
 .disclaimer {
   padding: 10px;
-  width: 90%;
-  margin: auto;
   background-color: $disclaimer-color;
   border-radius: 5px;
   display: flex;
   gap: 15px;
   align-items: center;
+  width: 100%;
 
   .disclaimer-icon {
     width: 20px;

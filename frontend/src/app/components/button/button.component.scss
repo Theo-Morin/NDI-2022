@@ -6,6 +6,7 @@ button {
     margin:0;
     padding: 0;
     border:none;
+    cursor: pointer;
 }
 
 .btn {
@@ -33,5 +34,22 @@ button {
 
     &--full {
         width:100%;
+        padding:15px 30px;
+    }
+
+    &--left {
+        text-align: left;
+        margin-right:10px;
+    }
+    &--right {
+        text-align: right;
+        margin-left:10px;
+    }
+    &--center {
+        text-align: center;
+    }
+
+    &--long {
+        padding: 10px 35px;
     }
 }
