@@ -3,17 +3,20 @@ import { CommonModule } from '@angular/common';
 import { SharedModule } from 'src/app/components/shared.module';
 import { HomeComponent } from './home.component';
 import { HomeRoutingModule } from './home-routing.module';
-
+import { AssociationsComponent } from './components/associations/associations.component';
+import { AssociationComponent } from './components/associations/components/association/association.component';
 
 
 @NgModule({
   declarations: [
-    HomeComponent
+    HomeComponent,
+    AssociationsComponent,
+    AssociationComponent,
   ],
   imports: [
     CommonModule,
     SharedModule,
-    HomeRoutingModule
+    HomeRoutingModule,
   ]
 })
 export class HomeModule { }
