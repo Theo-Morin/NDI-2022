@@ -10,4 +10,5 @@ require getcwd() . '/components/models/User.php';
 require getcwd() . '/components/models/YouTube.php';
 
 require getcwd() . '/components/models/FAQ.php';
+require getcwd() . '/components/models/HelpfulOrganization.php';
 require getcwd() . '/components/models/games/Quiz.php';
