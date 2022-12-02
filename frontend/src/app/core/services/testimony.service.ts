@@ -15,7 +15,7 @@ export class TestimonyService {
         return this.http.get(env.url + '/testimonies/');
     }
 
-    create(title: string, author: string, date: string, content: string): Observable<any> {
-        return this.http.post(env.url + '/testimonies/new/', { title, author, date, content });
+    create(title: string, author: string, content: string): Observable<any> {
+        return this.http.post(env.url + '/testimonies/new/', { title, author, content });
     }
 }
