@@ -1,5 +1,6 @@
 <section id="associations">
-  <h2>Les associations référentes</h2>
+  <h2>Besoin d'accompagnement ? Voici les associations partenaires</h2>
   <div class="associations">
+    <app-association *ngFor="let a of assoc" [name]="a.name" [link]="a.url" [img]="a.imgUrl"></app-association>
   </div>
 </section>
