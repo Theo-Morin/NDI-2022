@@ -10,6 +10,7 @@ export enum ButtonSize {
   Small = 'small',
   Medium = 'medium',
   Large = 'large',
+  SuperLarge = 'super-large',
   Full = 'full',
   Long = 'long'
 };
