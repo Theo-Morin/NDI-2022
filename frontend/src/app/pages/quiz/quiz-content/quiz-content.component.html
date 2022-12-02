@@ -1,25 +1,21 @@
 <div class="quiz" *ngIf="!finish; else endOfGame">
-    <h2>Question 1</h2>
+    <h2>{{actualAnswer?.title}}</h2>
     <div class="quiz__content">
         <app-progress-bar [progress]="progress"></app-progress-bar>
-        <div class="quiz__quiz">
-            <app-button [size]="buttonSize.Full" fontSize="24px" fontWeight="700" align="left" (click)="responding = true">Réponse 1</app-button>
+        <div class="quiz__quiz" *ngFor="let answer of actualAnswer?.answers">
+            <app-button [size]="buttonSize.Full" [color]="answer.content == selectedAnswer?.content && answer.isRight == '1'? buttonType.Success: buttonType.Primary" fontSize="24px" fontWeight="700" align="left" (click)="clickOnReponse(answer)">{{answer.content}}</app-button>
         </div>
-        <div class="quiz__quiz">
-            <app-button [size]="buttonSize.Full" fontSize="24px" fontWeight="700" align="left" (click)="responding = true">Réponse 2</app-button>
+        <div class="quiz__quiz quiz__hidden">
+            <app-button [size]="buttonSize.Full" fontSize="24px" fontWeight="700" align="left" (click)="goToVideo()"></app-button>
         </div>
-        <div class="quiz__quiz">
-            <app-button [size]="buttonSize.Full" fontSize="24px" fontWeight="700" align="left" (click)="responding = true">Réponse 3</app-button>
-        </div>
-        <div class="quiz__quiz">
-            <app-button [size]="buttonSize.Full" fontSize="24px" fontWeight="700" align="left" (click)="responding = true">Réponse 4</app-button>
-        </div>
-        <div class="quiz__next">
-            <app-button [size]="buttonSize.Long" fontWeight="600" *ngIf="responding">Suivant</app-button>
+        <div class="quiz__next" (click)="goToVideo()">
+            <app-button [size]="buttonSize.Long" fontWeight="600" *ngIf="responding" (click)="goToNextQuestion()">Suivant</app-button>
         </div>
     </div>
 </div>
 
 <ng-template #endOfGame>
-    <!-- Recap -->
+    <div class="quiz__answer" *ngFor="let q of quiz">
+        <app-dropdown [title]="q.title" [content]="q.explanation? q.explanation: 'Aucune explication prévue.'" [deploy]="true"></app-dropdown>
+    </div>
 </ng-template>

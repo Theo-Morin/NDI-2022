@@ -4,6 +4,7 @@ import { SharedModule } from 'src/app/components/shared.module';
 import { QuizComponent } from './quiz.component';
 import { QuizRoutingModule } from './quiz-routing.module';
 import { QuizContentComponent } from './quiz-content/quiz-content.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -15,7 +16,8 @@ import { QuizContentComponent } from './quiz-content/quiz-content.component';
   imports: [
     CommonModule,
     SharedModule,
-    QuizRoutingModule
+    QuizRoutingModule,
+    HttpClientModule
   ]
 })
 export class QuizModule { }

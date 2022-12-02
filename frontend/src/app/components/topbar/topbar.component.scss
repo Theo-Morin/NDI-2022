@@ -14,6 +14,7 @@ header {
     flex-direction: row;
     align-items: center;
     gap: 16px;
+    cursor: pointer;
 
     &:hover {
       cursor: pointer;
@@ -40,9 +41,9 @@ header {
       color: #FFFFFF;
       text-decoration: none;
       font-size: 16px;
+      cursor: pointer;
 
       &:hover {
-        cursor: pointer;
         text-decoration: underline 3px;
       }
     }
@@ -58,6 +59,24 @@ header {
       &:hover {
         text-decoration: underline 2px;
       }
+    }
+  }
+}
+
+
+@media (max-width: 1000px) {
+  header {
+    flex-direction: column;
+    padding: 10px 10px;
+
+    .title {
+      margin-bottom: 10px;
+    }
+
+    nav {
+      flex-direction: column;
+      gap: 10px;
+      text-align: center;
     }
   }
 }

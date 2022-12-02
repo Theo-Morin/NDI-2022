@@ -50,3 +50,16 @@
     color:white;
     background:#6B7695;
 }
+
+@media (max-width: 1000px) {
+    .footer {
+        flex-direction: column;
+        align-items: center;
+        padding:20px 15px;
+
+        &__content {
+            width: 95%;
+            margin: 10px auto;
+        }
+    }
+}
