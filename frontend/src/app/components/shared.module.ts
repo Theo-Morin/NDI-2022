@@ -5,6 +5,8 @@ import { ButtonComponent } from './button/button.component';
 import { DisclaimerComponent } from './disclaimer/disclaimer.component';
 import { DropdownComponent } from './dropdown/dropdown.component';
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
+import { TopbarComponent } from './topbar/topbar.component';
+import {RouterLink} from "@angular/router";
 
 
 
@@ -14,17 +16,20 @@ import { ProgressBarComponent } from './progress-bar/progress-bar.component';
     ButtonComponent,
     DisclaimerComponent,
     DropdownComponent,
-    ProgressBarComponent
+    ProgressBarComponent,
+    TopbarComponent
   ],
   exports: [
     InputComponent,
     ButtonComponent,
     DisclaimerComponent,
     DropdownComponent,
-    ProgressBarComponent
+    ProgressBarComponent,
+    TopbarComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterLink
   ]
 })
 export class SharedModule { }
