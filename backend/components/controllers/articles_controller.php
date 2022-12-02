@@ -6,13 +6,18 @@ if ($uc2 === null) {
     $articles = Article::getAll();
     echo json_encode($articles);
 
+} else if ($uc2 == 'top') {
+    $articles = Article::getAll(true);
+    echo json_encode($articles);
+
 } else if ($uc2 == 'new') {
     if (!isset($_POST['title'])) die(json_encode(['error' => 'You must supply a title']));
     if (!isset($_POST['content'])) die(json_encode(['error' => 'You must supply a content']));
 
     $author = null;
     if (isset($_POST['author']) && $_POST['author'] !== '') $author = $_POST['author'];
-    Article::create($_POST['title'], $author, date('Y-m-d'), $_POST['content']);
+    $isPinned = isset($_POST['isPinned']) && $_POST['isPinned'] ? true : false;
+    Article::create($_POST['title'], $author, date('Y-m-d'), $_POST['content'], $isPinned);
 
 } else {
     die(json_encode(['error' => 'Invalid route']));

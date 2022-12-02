@@ -14,8 +14,11 @@ export class ArticleService {
     get(): Observable<any> {
         return this.http.get(env.url + '/articles/');
     }
+    getTop(): Observable<any> {
+        return this.http.get(env.url + '/articles/top/');
+    }
 
-    create(title: string, author: string, content: string): Observable<any> {
-        return this.http.post(env.url + '/articles/new/', { title, author, content });
+    create(title: string, author: string, content: string, isPinned: boolean|undefined): Observable<any> {
+        return this.http.post(env.url + '/articles/new/', { title, author, content, isPinned: isPinned ? 1 : 0 });
     }
 }
