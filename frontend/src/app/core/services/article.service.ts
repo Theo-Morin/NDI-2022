@@ -14,4 +14,8 @@ export class ArticleService {
     get(): Observable<any> {
         return this.http.get(env.url + '/articles/');
     }
+
+    create(title: string, author: string, content: string): Observable<any> {
+        return this.http.post(env.url + '/articles/new/', { title, author, content });
+    }
 }
