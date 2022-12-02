@@ -1,0 +1,7 @@
+<div class="glossary-letter">
+  <h3>{{letter}}</h3>
+  <div class="definitions" *ngFor="let word of content">
+    <p><a href="{{word.source}}" target="_blank"><strong>{{word.word.toUpperCase()}}</strong></a></p>
+    <p>{{word.definition}}</p>
+  </div>
+</div>
