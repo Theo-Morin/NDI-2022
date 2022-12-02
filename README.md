@@ -19,6 +19,7 @@
     - Attendez 30 minutes sur le site et vous aurez le droit à une surprise audio
 <<<<<<< Updated upstream
     - Dernière réponse cachée dans les Quiz, redirige vers une vidéo
+    - Tapez : `home` sur votre clavier et vous serez redirigés vers la page /home
 
 ## Le jour de l'évenement
 Arrivée sur place **17h** - Fin de l'évenement **6h**.
