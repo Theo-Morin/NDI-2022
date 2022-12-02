@@ -10,7 +10,7 @@ describe('TemoignageComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ TemoignageTemoignageComponent ],
-      imports: [HttpClientModule]
+      providers: [HttpClientModule]
     })
     .compileComponents();
 

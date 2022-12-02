@@ -16,7 +16,7 @@ export class FaqComponent implements OnInit {
   ngOnInit(): void {
     this.faqService.getCategories().subscribe((categories) => {
       for(let cat in categories) {
-        this.faqService.get(cat).subscribe((questions) => {
+        this.faqService.get(cat.toString()).subscribe((questions) => {
           this.faq = questions;
         });
       }
