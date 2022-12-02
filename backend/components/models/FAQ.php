@@ -8,9 +8,18 @@ class Faq {
         while ($category = $stmt->fetchObject()) {
             $this->categories[$category->id] = $category;
         }
+    }
+
+    public function loadQuestions() {
+        foreach ($this->categories as $category) {
+            $category->questions = [];
+        }
 
         $stmt = Database::getInstance()->query('SELECT * FROM faq_question');
-        $this->questions = $stmt->fetchAll(PDO::FETCH_OBJ);
+        $questions = $stmt->fetchAll(PDO::FETCH_OBJ);
+        foreach ($questions as $qu) {
+            $this->categories[$qu->categoryId]->questions[] = $qu;
+        }
     }
 }
 

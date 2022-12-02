@@ -24,6 +24,10 @@ switch($uc1) {
         require 'articles_controller.php';
         break;
 
+    case 'testimonies':
+        require 'testimonies_controller.php';
+        break;
+
     case 'definitions':
         require 'definitions_controller.php';
         break;
