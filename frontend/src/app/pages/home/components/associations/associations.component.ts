@@ -14,7 +14,6 @@ export class AssociationsComponent implements OnInit {
 
   ngOnInit(): void {
     this.organizationsService.get().subscribe((data) => {
-      console.log(data);
       this.assoc = data;
     });
   }
