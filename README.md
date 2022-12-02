@@ -10,7 +10,13 @@
 ## Project Team
 
 ## Nos défis
-1)
+1) Easter Eggs
+    - Faire un don :
+        - 420€ ou 4.20€ : Redirige vers une page sur les risques de la drogue
+        - 5061981€ : Date du premier cas de VIH, redirection sur sa page wikipedia (Parce que s'instruire c'est bien aussi !)
+        - 1€ : Redirection sur la vidéo Youtube "Salut à toi jeune entrepreneur"
+    - Inspection du code : Logo de l'application
+    - Attendez 30 minutes sur le site et vous aurez le droit à une surprise audio
 2)
 3)
 4)

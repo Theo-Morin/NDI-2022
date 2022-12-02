@@ -8,6 +8,7 @@ import { DropdownComponent } from './dropdown/dropdown.component';
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 import { TopbarComponent } from './topbar/topbar.component';
 import { TextareaComponent } from './textarea/textarea.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -32,7 +33,8 @@ import { TextareaComponent } from './textarea/textarea.component';
   ],
   imports: [
     CommonModule,
-    RouterLink
+    RouterLink,
+    FormsModule
   ]
 })
 export class SharedModule { }

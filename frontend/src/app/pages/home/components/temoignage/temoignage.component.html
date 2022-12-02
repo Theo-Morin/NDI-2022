@@ -2,16 +2,24 @@
     <h2>Témoignages</h2>
 
     <div class="carousel">
-        <i class="icon chevron chevron-left"></i>
+        <i class="icon chevron chevron-left" (click)="goPreviousTestimony()"></i>
         <div class="temoignage__content">
-            <app-form *ngIf="formActive; else Temoignage"></app-form>
+            <div *ngIf="formActive; else Temoignage">
+                <div class="form">
+                    <app-input placeholder="Votre nom (Laisser vide pour être anonyme)" (valueChange)="author = $event"></app-input>
+                    <div class="form-disclaimer">
+                        <app-disclaimer>Si il dit des bétises on va le retrouver et lui briser ses os</app-disclaimer>
+                    </div>
+                    <app-textarea [placeholder]="'Votre témoignage'" (valueChange)="content = $event"></app-textarea>
+                </div>
+            </div>
             <ng-template #Temoignage>
-                <app-temoignage-temoignage></app-temoignage-temoignage>
+                <app-temoignage-temoignage [testimony]="selectedTestimony"></app-temoignage-temoignage>
             </ng-template>
         </div>
-        <i class="icon chevron chevron-right"></i>
+        <i class="icon chevron chevron-right" (click)="goNextTestimony()"></i>
     </div>
     <div class="align-center">
-        <app-button (click)="formActive = true" [size]="buttonSize.Large" fontWeight="600">Poster mon témoignage</app-button>
+        <app-button (click)="sendTestimony()" [size]="buttonSize.Large" fontWeight="600">Poster mon témoignage</app-button>
     </div>
 </div>
