@@ -7,13 +7,18 @@ if ($uc2 === null) {
     echo json_encode($testimonies);
 
 } else if ($uc2 == 'new') {
-    if (!isset($_POST['title'])) die(json_encode(['error' => 'You must supply a title']));
-    if (!isset($_POST['content'])) die(json_encode(['error' => 'You must supply a content']));
+    if (!isset($_POST['title'])) quitWithCodeAndJson(417, ['error' => 'You must supply a title']);
+    if (!isset($_POST['content'])) quitWithCodeAndJson(417, ['error' => 'You must supply a content']);
 
     $author = null;
     if (isset($_POST['author']) && $_POST['author'] !== '') $author = $_POST['author'];
-    Testimony::create($_POST['title'], $author, date('Y-m-d'), $_POST['content']);
+    $result = Testimony::create($_POST['title'], $author, getToday(), $_POST['content']);
+    if ($result) {
+        quitWithCodeAndJson(201, ['success' => 'Row added']);
+    } else {
+        quitWithCodeAndJson(500, ['error' => 'Sorry, it failed']);
+    }
 
 } else {
-    die(json_encode(['error' => 'Invalid route']));
+    quitWithCodeAndJson(404, ['error' => 'Invalid route']);
 }

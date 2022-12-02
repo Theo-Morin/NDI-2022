@@ -8,10 +8,6 @@ switch($uc1) {
         echo '{}';
         break;
 
-    case 'user':
-        require 'user_controller.php';
-        break;
-
     case 'quiz':
         require 'quiz_controller.php';
         break;
@@ -37,6 +33,5 @@ switch($uc1) {
         break;
 
     default:
-        http_response_code(404);
-        die(json_encode(['error' => 'Page not found']));
+        quitWithCodeAndJson(404, ['error' => 'Page not found']);
 }

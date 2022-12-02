@@ -10,6 +10,6 @@ class Testimony {
 
     public static function create($title, $author, $date, $content) {
         $stmt = Database::getInstance()->prepare('INSERT INTO testimony(title, author, date, content) VALUES (?, ?, ?, ?)');
-        $stmt->execute([$title, $author, $date, $content]);
+        return $stmt->execute([$title, $author, $date, $content]);
     }
 }

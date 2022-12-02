@@ -18,6 +18,8 @@
 define('personalToken', isset($_SERVER['HTTP_AUTHORIZATION']) ? htmlspecialchars($_SERVER['HTTP_AUTHORIZATION']) : null);
 
 header('Content-Type: application/json');
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Headers: *');
 date_default_timezone_set('Europe/Paris');
 
 // Define usuables variables
