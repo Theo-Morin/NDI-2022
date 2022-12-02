@@ -24,6 +24,11 @@
     }
 }
 
+.flex-between {
+    display: flex;
+    justify-content: space-between;
+}
+
 @media (max-width: 1000px) {
     .faq {
         &__content {

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 @Injectable({
@@ -17,6 +17,7 @@ export class TestimonyService {
     }
 
     create(title: string, author: string, content: string): Observable<any> {
-        return this.http.post(environment.url + '/testimonies/new/', { title, author, content });
+        let params = new HttpParams().append("title", title).append("author", author).append("content", content);
+        return this.http.post(environment.url + '/testimonies/new/', params);
     }
 }

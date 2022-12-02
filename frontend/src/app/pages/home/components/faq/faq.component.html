@@ -1,6 +1,10 @@
 <div class="faq">
     <h2>Les questions fréquentes</h2>
-    <div class="faq__content">
-        <app-dropdown title="Question 1" content="Contenu 1"></app-dropdown>
+    <div class="faq__content" *ngFor="let f of faq; let i=index">
+        <app-dropdown [title]="f.question" [content]="f['answer']" *ngIf="i<n"></app-dropdown>
+    </div>
+    <div class="faq__content flex-between">
+        <app-button *ngIf="n > 6" (click)="readLess()">Voir moins</app-button>
+        <app-button (click)="readMore()" *ngIf="n <= faq.length">LIRE PLUS</app-button>
     </div>
 </div>

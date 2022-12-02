@@ -15,7 +15,7 @@ export class FaqService {
     getCategories(): Observable<any> {
         return this.http.get(environment.url + '/faq/');
     }
-    get(catNum: number): Observable<any> {
+    get(catNum: string): Observable<any> {
         return this.http.get(environment.url + '/faq/' + catNum + '/');
     }
 }

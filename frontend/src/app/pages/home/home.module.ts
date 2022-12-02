@@ -9,6 +9,7 @@ import { FaqComponent } from './components/faq/faq.component';
 import { TemoignageComponent } from './components/temoignage/temoignage.component';
 import { FormComponent } from './components/temoignage/form/form.component';
 import { TemoignageTemoignageComponent } from './components/temoignage/temoignage/temoignage.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { TemoignageTemoignageComponent } from './components/temoignage/temoignag
     CommonModule,
     SharedModule,
     HomeRoutingModule,
+    HttpClientModule
   ]
 })
 export class HomeModule { }
