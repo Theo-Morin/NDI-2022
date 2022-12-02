@@ -1,0 +1,11 @@
+<div id="glossary">
+  <h2>Dictionnaire</h2>
+  <div class="glossary" *ngFor="let letter of glossary">
+    <app-letter-glossary
+      *ngIf="letter"
+      [letter]="letter.letter"
+      [content]="letter.content"
+    ></app-letter-glossary>
+  </div>
+</div>
+
