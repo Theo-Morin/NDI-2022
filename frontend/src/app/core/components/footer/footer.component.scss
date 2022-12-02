@@ -41,6 +41,10 @@
     }
 }
 
+.game {
+    display: none;
+}
+
 .copyright {
     padding:15px 25px;
     font-family: 'Poppins';
@@ -61,5 +65,8 @@
             width: 95%;
             margin: 10px auto;
         }
+    }
+    .game {
+        display: block;
     }
 }

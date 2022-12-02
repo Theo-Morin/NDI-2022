@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DonsComponent } from './pages/dons/dons.component';
+import { GameComponent } from './pages/game/game.component';
 
 const AuthModule = () =>
   import("./pages/auth/auth.module").then((m) => m.AuthModule);
@@ -34,6 +35,10 @@ const routes: Routes = [
   {
     path: "dons",
     component: DonsComponent
+  },
+  {
+    path: "game",
+    component: GameComponent
   },
   {
     path: "articles",

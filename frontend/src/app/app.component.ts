@@ -30,7 +30,7 @@ export class AppComponent implements OnInit {
       audio.src = "../../../assets/audio/sound.mp3";
       audio.load();
       audio.play();
-      window.alert("")
+      window.alert("WaW ! ça fait 30 minutes que tu es sur le site ! Tu dois bien l'aimer !");
     }, 1800000);
   }
 }
