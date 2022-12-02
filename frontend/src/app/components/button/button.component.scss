@@ -23,6 +23,10 @@ button {
     &--success {
         background:$success-color;
     }
+    
+    &--danger {
+        background:$danger-color;
+    }
 
     &--small {
         padding:5px 10px;

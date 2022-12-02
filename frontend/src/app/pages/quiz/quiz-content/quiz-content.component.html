@@ -3,7 +3,10 @@
     <div class="quiz__content">
         <app-progress-bar [progress]="progress"></app-progress-bar>
         <div class="quiz__quiz" *ngFor="let answer of actualAnswer?.answers">
-            <app-button [size]="buttonSize.Full" [color]="answer.content == selectedAnswer?.content && answer.isRight == '1'? buttonType.Success: buttonType.Primary" fontSize="24px" fontWeight="700" align="left" (click)="clickOnReponse(answer)">{{answer.content}}</app-button>
+            <app-button [size]="buttonSize.Full" [color]="
+                answer.content == selectedAnswer?.content && answer.isRight == '1'?
+                    buttonType.Success
+                : answer.content == selectedAnswer?.content && answer.isRight == '0'? buttonType.Danger: buttonType.Primary" fontSize="24px" fontWeight="700" align="left" (click)="clickOnReponse(answer)">{{answer.content}}</app-button>
         </div>
         <div class="quiz__quiz quiz__hidden">
             <app-button [size]="buttonSize.Full" fontSize="24px" fontWeight="700" align="left" (click)="goToVideo()"></app-button>
