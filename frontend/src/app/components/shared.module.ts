@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {RouterLink} from "@angular/router";
 import { InputComponent } from './input/input.component';
 import { ButtonComponent } from './button/button.component';
 import { DisclaimerComponent } from './disclaimer/disclaimer.component';
 import { DropdownComponent } from './dropdown/dropdown.component';
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
+import { TopbarComponent } from './topbar/topbar.component';
 import { TextareaComponent } from './textarea/textarea.component';
 
 
@@ -16,7 +18,8 @@ import { TextareaComponent } from './textarea/textarea.component';
     DisclaimerComponent,
     DropdownComponent,
     ProgressBarComponent,
-    TextareaComponent
+    TopbarComponent,
+    TextareaComponent,
   ],
   exports: [
     InputComponent,
@@ -24,10 +27,12 @@ import { TextareaComponent } from './textarea/textarea.component';
     DisclaimerComponent,
     DropdownComponent,
     ProgressBarComponent,
-    TextareaComponent
+    TopbarComponent,
+    TextareaComponent,
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterLink
   ]
 })
 export class SharedModule { }
