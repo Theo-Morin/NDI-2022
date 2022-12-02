@@ -3,7 +3,8 @@ import { Component, Input, OnInit } from '@angular/core';
 export enum ButtonType {
   Primary = 'primary',
   Secondary = 'secondary',
-  Success = 'success'
+  Success = 'success',
+  Danger = 'danger',
 };
 
 export enum ButtonSize {
