@@ -27,9 +27,6 @@ export class TemoignageComponent implements OnInit {
 
   sendTestimony() {
     if(this.formActive) {
-      if(this.author = '') {
-        this.author = 'Anonyme';
-      }
       this.testimonyService.create(this.author, this.author, this.content).subscribe(() => {
         this.formActive = false;
         this.testimonies.push({
