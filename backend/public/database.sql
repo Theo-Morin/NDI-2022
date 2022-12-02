@@ -1,21 +1,382 @@
-/**
- * Création et selection de la base de donnée
- */
- CREATE DATABASE IF NOT EXIST DEFAULT_TEMPLATE;
- USE DEFAULT_TEMPLATE;
+-- phpMyAdmin SQL Dump
+-- version 5.0.4deb2~bpo10+1
+-- https://www.phpmyadmin.net/
+--
+-- Hôte : localhost:3306
+-- Généré le : ven. 02 déc. 2022 à 01:33
+-- Version du serveur :  10.3.36-MariaDB-0+deb10u2
+-- Version de PHP : 7.3.31-1~deb10u1
 
-/**
- * Création de la table utilisateur
- */
-CREATE TABLE users (
-    userId INT(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    email VARCHAR(255) NOT NULL,
-    pseudonyme VARCHAR(255) NOT NULL,
-    passwd VARCHAR(255) NOT NULL,
-    firstName VARCHAR(255),
-    lastName VARCHAR(255),
-    phoneNumber VARCHAR(255),
-    isForgot BOOLEAN DEFAULT 0,
-    forgotPasswordToken VARCHAR(50),
-    creationDate DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
-);
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Base de données : `sylchiron`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `article`
+--
+
+CREATE TABLE `article` (
+  `id` int(4) NOT NULL,
+  `title` text NOT NULL,
+  `author` text DEFAULT NULL,
+  `date` date DEFAULT NULL,
+  `content` text NOT NULL,
+  `isPinned` tinyint(1) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `article`
+--
+
+INSERT INTO `article` (`id`, `title`, `author`, `date`, `content`, `isPinned`) VALUES
+(1, 'Mon article', 'Sylvain', '2022-12-01', 'Hého !', 0),
+(2, 'Article nul', NULL, NULL, 'Mince…', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `definitions`
+--
+
+CREATE TABLE `definitions` (
+  `id` int(4) NOT NULL,
+  `word` text NOT NULL,
+  `definition` text NOT NULL,
+  `source` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `definitions`
+--
+
+INSERT INTO `definitions` (`id`, `word`, `definition`, `source`) VALUES
+(2, 'abstinence', 'En sexualité, renoncement volontaire aux rapports.', 'https://www.ligneazur.org/ressources/definitions/'),
+(3, 'androgyne', 'Se dit d’une personne à la fois masculine et féminine.', 'https://www.ligneazur.org/ressources/definitions/'),
+(4, 'biphobie', 'Peur, rejet ou aversion, souvent sous la forme d’attitudes stigmatisantes, de comportements discriminatoires par des discours ou de la violence physique envers les personnes bisexuelles ou supposées comme telles.', 'https://www.ligneazur.org/ressources/definitions/'),
+(5, 'bisexualité', 'Désir affectif et sexuel, attirance érotique pour les personnes de l’un ou l’autre sexe.', 'https://www.ligneazur.org/ressources/definitions/'),
+(6, 'coming-out', 'Contraction de l’expression « coming out of the closet » (sortir du placard), désigne l’annonce volontaire de son orientation sexuelle ou de son identité de genre.', 'https://www.ligneazur.org/ressources/definitions/'),
+(7, 'hétérosexualité', 'Désir affectif et sexuel, attirance érotique exclusivement pour les personnes de l’autre sexe : un homme attiré par les femmes, une femme attirée par les hommes.', 'https://www.ligneazur.org/ressources/definitions/'),
+(8, 'homophobie', 'Peur, rejet ou aversion, souvent sous la forme d’attitudes stigmatisantes, de comportements discriminatoires, par des discours ou de la violence physique envers les personnes, ou identifiées comme telles, lesbiennes (lesbophobie), homosexuelles (homophobie), bisexuelles (biphobie) ou transgenres (transphobie). On parle plus globalement de LGBT-phobie. C’est aussi plus globalement la condamnation de l’homosexualité.', 'https://www.ligneazur.org/ressources/definitions/'),
+(9, 'homosexualité', 'Désir affectif et sexuel, attirance érotique exclusivement pour les personnes du même sexe : un homme attiré par les hommes, une femme attirée par les femmes', 'https://www.ligneazur.org/ressources/definitions/'),
+(10, 'identité de genre', 'Façon de se ressentir comme homme ou comme femme. Le plus souvent, le sexe biologique coïncide avec ce ressenti. Par exemple, une femme au corps féminin se sentira femme. Pour d’autres, sexe génital et identité de genre ne correspondront pas. Il existe des études sur le genre dans différentes disciplines (géographie, histoire, économie, science politique…). Elles interrogent depuis les années 70 la manière dont chacun·e peut construire son identité sexuelle aussi bien à travers son éducation que son orientation sexuelle.\r\nAvis sur l’identité de genre de la Commission nationale consultative des droits de l’homme du 31 juillet 2013', 'https://www.ligneazur.org/ressources/definitions/'),
+(11, 'identité sexuelle', 'Sentiment d’appartenir à un genre (masculin, féminin, trans…). La personne reconnait qu’elle en possède les attributs physiques, psychologiques ou symboliques. L’identité ne détermine pas l’orientation.', 'https://www.ligneazur.org/ressources/definitions/'),
+(12, 'intersexe', 'Selon l’ONU, les personnes intersexes sont « nées avec des caractéristiques sexuelles qui ne correspondent pas aux définitions typiques de « mâle » et « femelle » ». Le terme d’intersexuation (ou intersexualité) est un terme général pour désigner un ensemble d’atypies. Une personne intersexe est née avec des attributs sexuels dits « ambigus ». Cette ambiguïté peut par exemple être génitale, reproductive et/ou hormonale.\r\nVous souhaitez en savoir plus ? Vous êtes concerné·e ?', 'https://www.ligneazur.org/ressources/definitions/'),
+(13, 'lesbophobie', 'Peur, rejet ou aversion, souvent sous la forme d’attitudes stigmatisantes, de comportements discriminatoires par des discours ou de la violence physique envers les lesbiennes ou supposées comme telles.', 'https://www.ligneazur.org/ressources/definitions/'),
+(14, 'orientation sexuelle', 'Attirance émotionnelle, affective et sexuelle qui peut porter sur des personnes du même sexe (homosexualité), de l’autre sexe (hétérosexualité) ou indistinctement l’un ou l’autre (bisexualité). En outre, il est également possible de n’éprouver aucun goût pour quelque forme de sexualité que ce soit (on parle d’asexualité, qui diffère de l’abstinence).', 'https://www.ligneazur.org/ressources/definitions/'),
+(15, 'queer', 'Queer est un terme qui vient de l’anglais. Il signifie à l’origine étrange, tordu. Il fut longtemps utilisé comme injure désignant notamment les hommes homo/bisexuels, les personnes travesties et les personnes transgenre. Dans les années 1990, des théoricien·ne·s comme Teresa de Lauretis et Judith Butler mobilisent le queer comme un concept académique servant à désigner des alternatives à la norme hétérosexuelle. Il devient peu à peu un terme identitaire pour des personnes vivant en dehors des normes de la sexualité et du genre sans pour autant se reconnaître dans les termes identitaires « classiques » comme gay, lesbienne, bi·e ou trans.', 'https://www.ligneazur.org/ressources/definitions/'),
+(16, 'santé sexuelle', 'La santé sexuelle est un état de bien-être physique, émotionnel, mental et social associé à la sexualité. Elle ne consiste pas uniquement en l’absence de maladie, de dysfonction ou d’infirmité. Elle se base sur une approche positive et respectueuse de la sexualité, des relations sexuelles, et la possibilité d’avoir des expériences qui apportent du plaisir sans contrainte, discrimination ou violence (Organisation Mondiale de la Santé, 2002).', 'https://www.ligneazur.org/ressources/definitions/'),
+(17, 'stéréotype', 'Fausse croyance / idée reçue qu’une personne entretient au sujet des caractéristiques supposés d’un groupe de personnes. A force d’être entendue, cette croyance est pensée comme vraie alors que cela ne repose sur aucune vérité. Par exemple, croire que tous les Belges mangent des frites, ou que toutes les personnes blondes sont bêtes, etc.', 'https://www.ligneazur.org/ressources/definitions/'),
+(18, 'transgenre', 'Etre une personne transgenre ou trans, signifie étymologiquement une personne qui traverse le genre. Se dit d’une personne dont l’identité de genre n’est pas en concordance avec celle qui lui a été assignée (déclarée) à la naissance.\r\n\r\nPar exemple, une femme transgenre (ou trans) est une femme qui a été assignée homme à la naissance. Un homme transgenre (ou trans) est un homme qui a été assigné femme à la naissance.\r\nUne personne transgenre peut mettre en place des transformations corporelles (chirurgie, prise d’hormone). Ce n’est néanmoins pas toujours le cas, et la transition peut être simplement sociale (changement de prénom et/ou de pronoms) et/ou passer par une expression de genre différente.', 'https://www.ligneazur.org/ressources/definitions/'),
+(19, 'transphobie', 'Peur, rejet ou aversion, souvent sous la forme d’attitudes stigmatisantes, de comportements discriminatoires par des discours ou de la violence physique envers les personnes transgenres.', 'https://www.ligneazur.org/ressources/definitions/');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `faq_category`
+--
+
+CREATE TABLE `faq_category` (
+  `id` int(4) NOT NULL,
+  `pos` int(4) NOT NULL,
+  `title` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `faq_category`
+--
+
+INSERT INTO `faq_category` (`id`, `pos`, `title`) VALUES
+(1, 1, 'Catégorie principale');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `faq_question`
+--
+
+CREATE TABLE `faq_question` (
+  `categoryId` int(4) NOT NULL,
+  `pos` int(4) NOT NULL,
+  `question` text NOT NULL,
+  `answer` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `faq_question`
+--
+
+INSERT INTO `faq_question` (`categoryId`, `pos`, `question`, `answer`) VALUES
+(1, 1, 'Peut-on être contaminé lors d’un anulingus ?', 'Lors d’un anulingus aucune contamination par le VIH n’a été constatée depuis le début de l’épidémie.\n\nUne personne qui reçoit un anulingus ne peut pas être contaminée car le VIH ne se transmet pas par la salive.\n\nEn revanche, l’anulingus peut présenter un risque pour d\'autres maladies, notamment la syphilis, la blennorragie, l\'hépatite A  et divers microbes intestinaux.'),
+(1, 2, 'Qu’est-ce qu’une IST ?', 'Les Infections Sexuellement Transmissible (IST) – auparavant appelées Maladies Sexuellement Transmissibles (MST) ou “maladies vénériennes” – sont des infections provoquées par des microbes (virus, bactéries, parasites) qui peuvent être transmises plus ou moins facilement au cours de relations sexuelles.'),
+(1, 3, 'Comment savoir si on a une IST ?', 'Beaucoup de ces maladies donnent des signes :\n\n    des brûlures en urinant (surtout chez l’homme dans le cas des blennorragies ou des chlamydioses),\n    des pertes vaginales (avec les trichomonases, les vaginoses, parfois les chlamydioses),\n    des boutons dans la région des organes sexuels (comme l’herpès) ou même sur l’ensemble du corps (comme la syphilis),\n    des ulcérations (qui ressemblent à une plaie) des organes génitaux (comme dans la syphilis ou l’herpès),\n    des démangeaisons (avec l’herpès, parfois avec les condylomes, toujours avec les morpions),\n    des espèces de verrues dans le cas des condylomes.\n\nCes signes peuvent disparaître spontanément avant de réapparaître plus tard (dans le cas de l’herpès par exemple), parfois sous une forme différente (comme pour la syphilis).\n\nQuand on a des boutons ou une ulcération des organes génitaux, des secrétions anormales au niveau du sexe, des verrues « mal placées », il ne faut pas attendre que cela disparaisse tout seul mais consulter rapidement un médecin, qui posera le diagnostic et proposera un traitement.'),
+(1, 4, 'Comment soigner une IST ?', 'Toutes les IST se soignent, pour la plupart d’entre elles avec des traitements très simples.\n\nPresque toutes les IST peuvent guérir sans laisser de séquelles.\n\nCertaines IST peuvent provoquer des symptômes mineurs qui se traitent facilement mais d’autres peuvent entraîner à long terme des complications.\n\nAttention : se traiter pour une IST, c’est bien, mais il faut également traiter son ou ses partenaires, même en cas d’absence de signes cliniques. Sinon votre partenaire risque non seulement de vous recontaminer mais également de développer une maladie.'),
+(1, 5, 'Une IST, ça peut être grave ?', 'Si certaines IST peuvent provoquer des symptômes mineurs qui se traitement facilement, d’autres peuvent entraîner à long terme des complications, voire des cancers.\n\nL’hépatite B peut occasionner un cancer du foie.\n\nLes condylomes provoquent également des cancers chez la femme, parfois aussi chez l’homme.\n\nLes chlamydioses peuvent provoquer des infections génitales graves, des grossesses extra-utérines, et éventuellement une stérilité.\n\nEnfin d’autres maladies peuvent avoir des conséquences sérieuses (la syphilis) ou handicapantes (l’herpès).\n\nAvoir une IST c’est également augmenter de façon importante le risque d’être infecté par le VIH car ces maladies abîment les muqueuses sexuelles et facilitent la transmission de ce virus.'),
+(1, 6, 'HPV : qu’est-ce que le vaccin Gardasil 9® ?', 'Gardasil 9® est composé de fragments de 9 types différents de Papillomavirus humains (HPV 6, 11, 16, 18, 31, 33, 45, 52 et 58) obtenus par la technique de l’ADN recombinant. Il ne contient aucun germe vivant.\nQuelles sont les indications du Gardasil 9® ?\n\nGardasil 9® est indiqué à partir de 9 ans pour la prévention des :\n\n    Lésions précancéreuses et cancers du col de l’utérus, de la vulve, du vagin et de l’anus dus aux types d’HPV contenus dans le vaccin,\n    Verrues génitales (condylomes acuminés) dues à des types d’HPV spécifiques.\n\nLa vaccination anti-HPV recommandée pour :\n\n    les filles et les garçons âgés de 11 à 14 ans inclus et en rattrapage de 15 à 19 ans inclus,\n    les hommes ayant des relations sexuelles avec des hommes (HSH) jusqu’à 26 ans inclus,\n    les personnes immunodéprimées : la vaccination est recommandée chez les garçons comme les filles aux mêmes âges que dans la population générale, avec un rattrapage jusqu’à l’âge de 19 ans inclus.\n\nAttention :\n\n    La vaccination ne se substitue pas au dépistage des lésions précancéreuses et cancéreuses du col de l’utérus par le frottis cervico-utérin, y compris chez les femmes vaccinées. À partir de 25 ans, toutes les jeunes femmes vaccinées ou non vaccinées doivent continuer à bénéficier du dépistage selon les recommandations en vigueur.\n    La vaccination est d’autant plus efficace que vous n’avez encore été exposé-e au risque d’infection par le HPV.\n    L’une des doses de la vaccination peut être co-administrée notamment avec le rappel diphtérie-tétanos-coqueluche-poliomyélite prévu entre 11 et 13 ans ou avec un vaccin contre l’hépatite B, ainsi qu’avec le vaccin contre le méningocoque de sérogroupe C dans le cadre du rattrapage vaccinal.\n\nQuel est le schéma vaccinal pour Gardasil 9® ?\n\n    De 9 à 14 ans inclus au moment de la 1ère injection : 2 doses à 0 et 5 à 13 mois. La 2ème dose doit être administrée entre 5 et 13 mois après la 1ère dose. Si la 2ème dose est administrée moins de 5 mois après la 1ère dose, une 3ème dose devra toujours être administrée.\n\n    15 ans et plus au moment de la 1ère injection : 3 doses à 0, 2, 6 mois. La 2ème dose doit être administrée au moins un mois après la 1ère dose, et la 3ème dose doit être administrée au moins 3 mois après la 2ème dose. Les trois doses doivent être administrées en moins d’un an.\n\n    HSH jusqu’à 26 ans révolus : 3 doses à 0, 2, 6 mois\n\n    Personnes immunodéprimées : 3 doses à 0, 2, 6 mois\n\nLe vaccin est administré par voie intramusculaire et doit être conservé au réfrigérateur entre 2 et 8°C.\nLe vaccin Gardasil 9® est-il remboursé ?\n\nLe vaccin Gardasil 9® est remboursé à 65% quand il est prescrit avec une ordonnance (Liste I).\n\nIl est remboursable pour :\n\n    les filles et les garçons de 9 à 14 an,  et en rattrapage de 15 à 19 ans\n    les HSH jusqu’à 26 ans révolus (inclus)\n    les personnes immunodéprimées jusqu’à 19 ans.'),
+(1, 7, 'Une IST c’est quoi ?', 'Les Infections Sexuellement Transmissibles (anciennement appelées Maladies Sexuellement Transmissibles [MST] ou maladies vénériennes) sont des infections provoquées par des microbes (virus, bactéries, parasites) qui peuvent être transmis plus ou moins facilement au cours de relations sexuelles.\n\nLes IST les plus connues sont : le VIH, la gonococcie, les chlamydiae, la syphilis, les condylomes, la vaginose, l\'herpès génital, les hépatites.\n\nLe nombre de personnes infectées n\'a pas diminué ces dernières années.\n\nCependant, en 2018, le nombre de personnes ayant découvert leur séropositivité au VIH a été de 6155, soit une baisse significative par rapport à 2017. 56% des personnes ayant découvert leur séropositivité en 2018 ont été contaminées par rapports hétérosexuels, 40% par rapports sexuels entre hommes et 2% via un usage de drogues injectables.\n\nLe nombre d\'infections à Chlamydia uro-génitales a augmenté de manière plus marquée chez les hommes mais le nombre de cas diagnostiqués est resté toujours plus important chez les femmes que chez les hommes.\n\nLes gonococcies ont continué de progresser chez les hommes ayant des relations sexuelles avec d’autres hommes (HsH). Pour les hétérosexuels comme pour les HsH, c’est la tranche d’âge des 20-29 ans qui est la plus touchée que ce soit en Ile-de-France ou dans d\'autres régions métropolitaines. Mais l’augmentation chez les hétérosexuels concerne essentiellement les départements d’Outre-mer.\n\nLe nombre de diagnostics de syphilis a été stable entre 2015 et 2017. Les HsH représentent 81% des cas. Une faible augmentation a été observée chez les hétérosexuels, notamment chez les femmes.\n\nLe dépistage précoce reste très important. Plus une infection est diagnostiquée tôt, plus il sera facile de la traiter. Par conséquent : n\'oubliez pas de prévenir vos (ex)partenaires !'),
+(1, 8, 'Peut-on dépister toutes les IST en une fois ?', 'Les infections sexuellement transmissibles (IST) pouvant être dépistées par une prise de sang sont : l\'infection par le VIH, l\'hépatite B et la syphilis.\n\nCertaines maladies ne seront découvertes que lors d\'un examen médical : le médecin observe les lésions et peut poser le diagnostic.\n\nLes chlamydioses peuvent maintenant être recherchées par une analyse d\'urine.\n\nBénéficier régulièrement d\'un examen médical permettra de rechercher les condylomes à l\'origine des cancers du col de l\'utérus et du canal anal.\n\nSi vous allez consulter un médecin en ville, expliquez-lui les risques auxquels vous pensez avoir été exposé-e, et décrivez-lui vos symptômes. Il pourra vous proposer des analyses ou un traitement.\n\nVous pouvez aussi effectuer un dépistage des IST dans un CeGIDD.'),
+(1, 9, 'Où consulter pour une IST ?', 'Il existe plusieurs possibilités :\n\nconsulter son médecin traitant : il pourra soigner une maladie en cours, proposer un dépistage adapté, ou orienter vers un spécialiste si nécessaire,\n\nles femmes qui sont suivies par un gynécologue peuvent bien sûr l\'interroger sur les IST,\n\nse rendre dans un CeGIDD (centre de dépistage).\n\nParfois les CeGIDD ne peuvent faire que les tests du VIH, de l’hépatite B et de l’hépatite C. Certains de ces centres sont également habilités à traiter l’ensemble des IST, gratuitement, mais cela ne sera pas forcément anonyme. Renseignez-vous.'),
+(1, 10, 'Comment se protéger des IST ?', 'Les infections sexuellement transmissibles ou IST sont des maladies provoquées par des microbes (virus, bactéries, parasites) qui peuvent être transmises plus ou moins facilement. On peut s\'en protéger et pour certaines IST (hépatite B, papillomavirus), il est même possible de se faire vacciner.\n\nLe préservatif reste un moyen simple pour se protéger et protéger l\'autre lors de chaque rapport sexuel.\n\nAttention : une contraception (pilule, spermicides, DIU…) ne protège pas des IST.\n\nLe dépistage régulier des IST comme du VIH est important lorsqu\'on a plusieurs partenaires et à chaque fois qu\'on souhaite arrêter le préservatif avec un nouveau partenaire régulier (notamment car beaucoup d’IST n\'ont pas ou peu de symptômes…).\n\nPour le VIH et pour certaines personnes particulièrement exposées, la PrEP s\'avère un moyen très efficace pour ne pas être contaminé.\n\nDe même, le TasP (Treatment as Prevention), c\'est-à-dire le traitement qu\'une personne séropositive prend contre le VIH, représente également un moyen de prévention puisqu\'il permet d\'empêcher la transmission du virus.\n\nLa plupart des IST se soignent facilement. Aussi, après avoir découvert qu\'on est infecté, il convient de :\n\nprendre les traitements prescrits par le médecin et les suivre jusqu\'au bout,\nprévenir son ou ses partenaire(s) afin qu\'il(s) ou elle(s) puisse(nt) également se faire dépister et traiter.'),
+(1, 11, 'La mycose (candidose) c’est quoi ?', 'La mycose (ou candidose) est une infection des organes génitaux par un champignon de type levure, (pratiquement toujours le Candida albicans). Elle est extrêmement fréquente et banale notamment chez la femme.\n\nPlusieurs circonstances peuvent amener à un déséquilibre de la flore vaginale, notamment :\n\n    diabète,\n    infection à VIH,\n    tout déficit immunitaire transitoire ou prolongé,\n    traitement antibiotique,\n    pilule contraceptive,\n    3ème trimestre de la grossesse et post-partum,\n    hygiène insuffisante ou excessive.\n\nCe n\'est pas parce que quelqu\'un a une mycose qu\'il-elle a forcément le VIH ou le sida.'),
+(1, 12, 'Une IST, ça peut être grave ?', 'Toutes les IST se soignent, la plupart d\'entre elles avec des traitements très simples. Et presque toutes peuvent guérir sans laisser de séquelles.\n\nCertaines IST peuvent toutefois entraîner à long terme des cancers ou une stérilité.\n\nLes condylomes (HPV), par exemple, peuvent provoquer des cancers chez la femme, parfois aussi chez l\'homme.\n\nLes complications des chlamydioses sont importantes (infections génitales graves, grossesses extra-utérines, stérilité).\n\nD\'autres maladies peuvent avoir des conséquences déplaisantes, comme l\'herpès.\n\nA noter qu\'avoir une IST augmente de façon importante le risque d\'être infecté.e par le VIH, car ces maladies abîment les muqueuses sexuelles.\n\nAttention ! Se traiter pour une IST c\'est bien, mais il est  important que le ou les partenaires soient eux aussi traités. Dans le cas contraire le risque est de développer la maladie et aussi - éventuellement - de vous recontaminer.'),
+(1, 13, 'Si on a une mycose, on a le VIH ?', 'Les mycoses peuvent se développer aussi bien chez une personne séropositive au VIH que chez une personne qui n\'a pas le VIH.\n\nAvoir une mycose ne signifie pas forcément être contaminé par le VIH ou avoir le sida.\n\nUne mycose peut être transmise par un rapport sexuel mais elle peut aussi se développer spontanément, par exemple à la suite d\'un traitement par antibiotiques, de la fréquentation d\'une piscine, l\'été en cas de forte chaleur, en raison d\'une fatigue ou d\'un stress, ou bien par excès d\'hygiène qui dérègle la flore vaginale.'),
+(1, 14, 'La syphilis, c’est quoi ?', 'Maladie vénérienne emblématique, la syphilis, ou « vérole », est une infection bactérienne (Treponema Pallidum ou tréponème pâle) très ancienne, responsable de lésions de la peau et des muqueuses pouvant toucher de nombreux organes.\n\nRamenée d’Amérique du Sud par l’équipage de Christophe Colomb, la vérole se répand en Europe à l’occasion du siège de Naples par Charles VIII (1494).\n\nIl ne faut pas confondre avec la \"petite vérole\" qui désignait la variole.\nTransmission de la syphilis\n\nLa transmission de la syphilis peut se faire par :\n\n    contact direct avec une muqueuse ou des lésions cutanées, le tréponème ne survivant pas à l’air libre,\n    rapports sexuels non protégés : pénétration vaginale, pénétration anale, rapports bouche-sexe,\n    risque de transmission élevé de l’ordre de 30% sur un seul rapport. Le risque est maximal pendant la 1ère année (période précoce), les tréponèmes étant présents d’abord sur le chancre, puis à la surface des lésions de la peau et surtout des muqueuses.\n\nLa transmission peut avoir lieu :\n\n    au cours de la syphilis primaire : chancre, ulcération isolée ou plaie syphilitique, ou simple contact muqueux,\n    au moment des éruptions de la syphilis secondaire : lésions cutanées et au niveau des muqueuses.\n\nLa transmission mère-enfant constitue un risque majeur pour le fœtus (mort in utero), ou gravissime chez le nouveau-né. C\'est pourquoi le dépistage de la syphilis est obligatoire chez la femme enceinte.\nSymptômes de la syphilis\n\nLes symptômes cliniques peuvent être très variés, ce qui peut rendre le diagnostic difficile. L\'incubation dure 21 jours en moyenne (de 10 à 90 jours).\n\nLa syphilis comporte plusieurs stades :\n\n    primaire qui dure 6 à 8 semaines. Un chancre et une adénopathie peuvent apparaître sans pour autant être visibles. Le chancre peut apparaître 20 jours en moyenne (10 à 100 jours) après le contact, au point d’inoculation (d’où les formes extra-sexuelles). Il s\'agit d\'une ulcération indolore, superficielle et bien limitée, d\'un diamètre de 5 à 15mm. Il évolue pendant une quinzaine de jours, puis disparaît. Le chancre grouille littéralement de tréponèmes, d’où sa grande contagiosité.\n\n    secondaire qui survient environ de 6 à 16 semaines après la contamination et dure en moyenne 1 à 2 ans. Le tableau clinique est très variable, les lésions pouvant revêtir toutes sortes d’aspects et être en nombre variable (de quelques-unes à plusieurs centaines).\n\nLa syphilis latente (ou sérologique) précoce est découverte fortuitement, au cours d’un test sérologique, sur une syphilis d’évolution inférieure à 1 an. 30 % des syphilis sont diagnostiquées à ce stade.\n\nLa syphilis tertiaire est devenue rarissime. Elle survient vers la 3ème année (de 2 à plus de 10 ans). Elle peut provoquer des lésions neurologiques, cutanées, des troubles cardio-vasculaires. Elle est connue pour les troubles psychiatriques qui ont été beaucoup décrits dans la littérature ancienne.\nDépistage de la syphilis\n\nLe délai pour le dépistage est d\'environ 5 semaines. La sérologie (par prise de sang) peut se positiver au plus tôt 7 à 10 jours après l’apparition du chancre. Avant 7 à 10 jours, le diagnostic peut être posé grâce à l’examen direct en cas de lésion.\n\nLe dépistage se fait en 2 étapes :\n\n    Tests tréponémiques (TT), en général TPHA (Treponema pallidum Hemagglutination Assay). Détectent des anticorps dirigés contre des antigènes du tréponème qui persistent même après disparition du tréponème. Ils restent le plus souvent positifs après traitement et se positivent entre 1 semaine et 10 jours après le début du chancre. Si le résultat est négatif, le dépistage s’arrête là. S\'il est positif, on passe à l’étape 2,\n    Tests non tréponémiques (TNT) soit VDRL (Veneral Disease Research Laboratory). Ils ont pour caractéristique de devenir négatifs le plus souvent après traitement. Un résultat quantitatif est utile pour faire la distinction entre une syphilis active et une cicatrice sérologique, et pour suivre l’efficacité du traitement le cas échéant. Le VDRL se négative en cas de guérison, c’est donc un bon test de surveillance.\n\nLe suivi recommandé par la Haute Autorité de Santé (HAS) se fait selon le rythme suivant :\n\n    En cas de syphilis précoce, contrôle à 3, 6 et 12 mois, plus fréquemment chez les patients VIH positifs et la femme enceinte sans plus de précision,\n    En cas de syphilis tardive, contrôle à 6, 12 et 24 mois.\n\nTraitement de la syphilis\n\nSyphilis précoce : Benzathine benzylpenicilline, un antibiotique du groupe de la pénicilline : 1 injection IM (intra-musculaire) en dose unique.\n\nEn cas d\'allergie à la pénicilline, le traitement se fera pas Doxycycline® 100 mg 1cp 2x/jour pendant 14 jours au milieu des repas et au moins 1h avant de se coucher.\n\nSyphilis tardive (plus d\'un an) : le traitement reprend la Benzathine benzylpenicilline avec 1 injection IM par semaine pendant 3 semaines. En cas d\'allergie et en l’absence de neurosyphilis : Doxycycline® 100 mg 1 cp 2x/jour pendant 21 jours au milieu des repas et au moins 1h avant de se coucher.\n\nLa personne est considérée comme guérie, et donc non contaminante :\n\n    Syphilis précoce : 7 jours après l’injection par Benzathine benzylpenicilline à la fin des 14 jours de traitement par Doxycycline®. Le préservatif est toutefois recommandé pendant 7 ou 14 jours selon le traitement.\n    Syphilis tardive : à la fin du traitement de 21 jours qu\'il s\'agisse de traitement par Benzathine benzylpenicilline ou par Doxycycline®. Le préservatif est donc recommandé pendant 21 jours.'),
+(1, 15, 'La LGV, c’est quoi ?', 'La lymphogranulomatose vénérienne ou Lymphogranuloma venerum (LGV) ou maladie de Nicolas-Favre, est une IST due à une bactérie de la famille des Chlamydiae.\n\nTransmission \n\n    lors des rapports sexuels de pénétration non protégée vaginale ou anale,\n    par la pratique du \"fist-fucking\" (pénétration de l’anus avec le poing).\n\nSymptômes\n\nLe délai d’incubation varie de 2 à 60 jours, en moyenne 20-25 jours.\n\nLa LGV évolue classiquement en 3 phases :\n\nPhase primaire\n\nAprès l’incubation, apparaît une lésion de type papule (bouton surélevé) ou vésicule (comme une lésion élémentaire d’herpès, donc avec du liquide dedans), qui va ensuite s’ulcérer (donc faire un trou). Cette lésion, indolore et transitoire, passe presque toujours inaperçue.\n\nPhase secondaire\n\nUne à deux semaines après l’apparition de la 1ère lésion, des adénopathies (gros ganglions douloureux habituellement multiples) peuvent apparaître.\n\nLa phase secondaire de la LGV peut également provoquer une inflammation du rectum et de l’anus caractérisée par :\n\n    des douleurs rectales,\n    une contracture douloureuse du rectum avec sensation de brûlure, envie constante d’aller à la selle,\n    un écoulement purulent plus ou moins hémorragique.\n\nPhase tertiaire\n\nEn l’absence de traitement, l’infection peut devenir chronique avec apparition d’un rétrécissement du rectum et de fistules périnéales. Dans certains cas il n’y a pas de symptômes particuliers.\n\nLes complications sont devenues rares car les patients sont plus sensibilisés aux IST et les traitements antibiotiques sont efficaces.\n\nDépistage/diagnostic\n\nLa LGV n’a pas de symptomatologie spécifique. Pour le diagnostic de la LGV la recherche de Chlamydia trachomatis par PCR est primordiale.\n\nLes prélèvements se font :\n\n    par écouvillonnage (en frottant la lésion ou le pus à l’aide d’une sorte de \"coton tige\"), des lésions péri-anales (chancre),\n    sous anuscopie ou sous rectoscopie lorsqu’il existe une inflammation de l’anus et du rectum (anorectite),\n    ou par ponction.\n\nTraitement\n\nLe traitement habituel de la LGV est l’antibiotique doxycycline, ou bien l\'azithromycine, pris par voie orale pendant 3 à 4 semaines. Parfois la chirurgie s’avère nécessaire pour des complications locales.\n\nLe suivi se poursuit jusqu’à l’obtention d’un résultat de test négatif de contrôle par PCR environ 3 à 4 semaines après la fin du traitement et l’absence de signes cliniques.\n\nLa personne n’est plus contaminante lorsque le résultat du test de contrôle devient négatif environ 3 à 4 semaines après la fin du traitement et quand il n’y a plus de symptômes.\n\nLes partenaires ayant eu des contacts dans les 60 jours qui ont précédé le début des manifestations cliniques, même en l’absence de symptômes, doivent également être dépistés et traités.'),
+(1, 16, 'L’herpès génital, c’est quoi ?', 'Il existe deux Herpes Simplex Virus (HSV) :\n\n    HSV1 se transmet principalement par contact des muqueuses buccales, responsable de l’herpès oro-facial/labial. Mais peut également être transmis dans la zone génitale lors des rapports oro-génitaux et provoquer un herpès génital,\n    HSV2 se transmet presque exclusivement par voie sexuelle et provoque des infections génitales ou anales (herpès génital).\n\nL’herpès génital (HG) est l’une des IST les plus répandues dans le monde et représente la première cause d’ulcère génital.\n\nLe retentissement de l’herpès génital récurrent sur la qualité de vie est important.\n\nAprès la primo infection, le virus herpétique s’installe dans l’organisme et s’y « endort », puis se manifeste ensuite lors de poussées par de petites cloques évoluant en plaies, localisées sur les organes sexuels ou à proximité.\n\nCette infection peut resurgir plusieurs fois chez la même personne au cours de sa vie.  Ces résurgences ou poussées se produisent à un rythme variable, parfois de façon asymptomatique.\n\nEn France, la prévalence chez l’adulte dans la population générale est élevée et serait respectivement de 67% pour HSV1 et 17% pour HSV2.\nTransmission\n\nLa transmission de HSV-2 se produit lors des rapports sexuels :\n\n    soit quand il y a des lésions d’herpès,\n    soit quand il y a présence de virus dans les sécrétions génitales au cours d’une poussée asymptomatique.\n\nLa pénétration anale ou vaginale n’est pas obligatoire pour qu’il y ait contamination. Le contact des muqueuses avec des lésions herpétiques (le plus souvent extériorisées) suffit à la transmission. Les doigts peuvent tout à fait servir de moyen de transport du virus des parties génitales vers d’autres sites (anus, œil…).\n\nOn croyait autrefois que HSV1 ne causait d’infection que sur la partie supérieure du corps (oro-faciale notamment) et que le HSV2 n’attaquait que la partie inférieure du corps. Cette idée est abandonnée : HSV1 et HSV2 peuvent infecter toute région cutanéo-muqueuse.\n\nA partir d’un contact, le délai d’incubation est très variable, de 1 jour à 1 mois, 8 jours en moyenne.\nSymptômes\n\nL’herpès génital évolue en 2 phases : la primo-infection puis les résurgences (ou récurrences)\n\n1. La primo-infection\n\nElle suit le 1er contact avec le virus.\n\n    Elle est asymptomatique (pas de signes) dans la majorité des cas, ce qui n’empêche pas la contamination d’un-e partenaire,\n    Lorsqu’elle est symptomatique, elle donne une éruption vésiculaire (boutons clairs remplis de liquide, reposant sur une zone enflammée) douloureuse, qui débute au niveau des grandes lèvres chez la femme, et sur le gland (balanite) chez l’homme,\n    Cette éruption s’accompagne de signes généraux (fièvre, malaise général, etc.),\n    La guérison des lésions est habituelle, mais le virus reste présent.\n\nLe virus reste latent au niveau des ganglions nerveux et peut se réactiver, à la faveur le plus souvent d’un événement intercurrent (infection concomitante, stress, immunodépression, etc.).\n\n2. Les résurgences (ou récurrences)\n\nElles résultent de cette réactivation. C’est le « bouton de fièvre » ou les éruptions génitales selon la localisation initiale et sur le territoire de la primo-infection.\n\n    Elles se produisent avec un rythme variable,\n    Elles sont favorisées par l’immunodépression,\n    Elles peuvent être asymptomatiques.\n\nDans tous les cas, l’éruption herpétique est :\n\n    douloureuse (sensation de brûlure intense),\n    souvent prurigineuse (ça gratte), ces signes fonctionnels étant particulièrement stimulés au contact avec les lésions.\n\nLors des résurgences, les démangeaisons, brûlures et autres picotements précèdent l’éruption de 1 à 2 jours.\nDépistage\nLe diagnostic de l\'herpès génital est réalisé lors d\'un examen clinique médical. Il n’y a pas lieu d’effectuer des prélèvements, sauf lorsque les lésions revêtent un aspect atypique pouvant induire en erreur sur le diagnostic. Le dépistage par sérologie (prise de sang) permet de connaître le statut de la personne, mais son intérêt est très souvent nul.\nTraitement\n\nDeux molécules sont indiquées dans le traitement de l’herpès génital (primo-infection ou résurgence) :\n\n    l’Aciclovir (ZOVIRAX®) : cp à 200mg, crème à 5%,\n    le Valaciclovir (ZELITREX®) : cp à 500 mg.\n\nPris par voie orale, le traitement contre l’herpès génital diminue l’intensité et la durée de la poussée mais n’élimine pas les virus « dormants », ce qui exclue une guérison définitive.'),
+(1, 17, 'Le HPV, c’est quoi ?', 'Les papillomavirus humains, aussi appelés Human PapillomaVirus (HPV), regroupent plus de 200 types de HPV, dont environ 40 peuvent infecter les organes génitaux des hommes et des femmes. Les autres types de papillomavirus infectent la peau et sont responsables de verrues cutanées (exemple verrues plantaires). Les HPV spécifiques de la peau ne contaminent jamais la sphère génitale.\n\nLes HPV qui infectent les organes génitaux sont de 2 types. Certains peuvent être à l’origine de lésions pré cancereuses et de cancers. D’autres sont tout à fait bénins.\n\nOn distingue deux types de lésions :\n\n    Les condylomes \"acuminés\" ou \"crêtes de coq\" qui sont de petites excroissances, bénignes. Chez l\'homme, elles se trouvent au niveau de la verge et de l\'anus. Chez la femme, on les voit au niveau de la vulve, du vagin et de l\'anus,\n    Les condylomes \"plans\" ou lésions précancéreuses ou cancéreuses. Ils se situent chez la femme au niveau du col de l\'utérus et dans le vagin ; chez l\'homme sur le gland et l\'orifice urinaire. Pour les deux sexes,  ils peuvent aussi se situer au niveau anal. Ils sont invisibles à l’œil nu, d’où la nécessité d’un dépistage systématique par le frottis du col de l’utérus et par un examen fait par un spécialiste pour les autres localisations.\n\nEnviron 70 % à 80 % des personnes sexuellement actives (sans distinction de genre ou d’orientation sexuelle) ont ou vont contracter un papillomavirus. Moins de 20% à 40% est activement porteuse du virus. La guérison se fait de façon spontanée : 70% des personnes infectées guérissent en 12 mois et 90% en 24 mois.\n\nLe HPV peut aussi rester au niveau des muqueuses génitales longtemps après la contamination.\n\n    Un HPV ayant un pouvoir oncogène peut provoquer des lésions pré cancéreuses ou cancéreuses plus de 10 ans après la contamination,\n    Avec un HPV non cancérigène, des condylomes (crêtes de coq...) peuvent apparaitre après des périodes moins longues (3 semaines à plusieurs années).\n\nIl est donc fort probable que la contamination ne soit pas du tout récente.\nTransmission\n\nLa transmission des virus HPV peut se faire par contact direct avec des lésions. Elle a lieu essentiellement au cours des rapports sexuels, en général lors des premières relations sexuelles.\n\nLe risque de contamination sur un seul contact sexuel est de l’ordre de 60 à 70%.\n\nLes papillomavirus peuvent se transmettre par les attouchements, même lors d’un rapport sans pénétration.\n\nLes rapports bucco-génitaux (fellation, cunilingus) ou bucco-anaux (anulingus) peuvent véhiculer le virus.\n\nLes préservatifs diminuent mais n’annulent pas le risque de transmission.\nSymptômes\n\nLes virus HPV peuvent rester très longtemps silencieux. L’apparition des symptômes ne veut donc pas forcément dire que la contamination est récente.\n\nLes infections latentes asymptomatiques sont 100 fois plus fréquentes que les condylomes visibles. Il en va de même des localisations isolées du canal anal, dont le mode de transmission serait le plus souvent lié à des pratiques de pénétration anale.\n\nLorsqu’elles sont présentes, les manifestations sont non spécifiques : prurit (démangeaisons), excroissances, saignements et ne se rencontrent que dans la forme exophytique (une lésion est dite exophytique lorsqu’elle apparaît vers l’extérieur. Le contraire est endophytique).\n\nLes condylomes se présentent sous la forme de :\n\n    condylomes végétants (acuminés ou végétations vénériennes ou crêtes de coq) uniques ou multiples, rosés ou grisâtres, plus ou moins pédiculées, localisés ou disséminés,\n    papules multiples, rosées ou métachromes, à surface lisse, isolées ou en nappe,\n    condylomes plans parfois difficiles à mettre en évidence.\n\nLe risque majeur des condylomes est la dégénérescence en cancer. Mais la plupart des infections à HPV ne deviennent pas cancéreuses.\n\nLes souches à fort potentiel oncogène sont associées au cancer :\n\n    du col de l’utérus,\n    de la vulve,\n    de l’anus (80 à 100% des cancers épidermoïdes de l’anus),\n    du pénis, plus rarement,\n    de la sphère ORL.\n\nDépistage\n\nPour les HPV non oncogènes il n’existe aucun dépistage. La recherche des condylomes (verrues génitales ou crêtes de coq) provoqués par les HPV non oncogènes se fait lors d\'un examen par un médecin au niveau anal et génital chez la femme et l’homme.\n\nPour les HPV oncogènes (condylomes plans), on procède au dépistage des lésions cancéreuses ou pré cancéreuses du col de l’utérus chez les femmes âgées de plus de 30 ans et au dépistage du cancer anal chez les personnes pratiquant les pénétrations anales.\n\nLe dépistage se fait par :\n\n    Examen cytologique sur un frottis cervico vaginal (FCV) ou cervico-utérin (FCU) à la recherche d’anomalies cellulaires pouvant évoquer la présence d’une lésion précancéreuse ou d’un cancer,\n    Test HPV  (typage viral) afin de détecter la présence des HPV oncogènes.\n\nTraitement\n\nLe traitement vise à faire disparaitre les lésions visibles. Une éradication virale est illusoire. Aucun traitement ne possède d’avantages marquants sur les autres. La méthode utilisée dépend de la localisation et du type lésionnel.\n\nUne place importante doit être faite aux traitements auto-appliqués. Les condylomes peuvent être soignés grâce à des crèmes, brûlés à l’azote, au laser, ou par extraction locale. Souvent le traitement est réalisé pour des raisons esthétiques, car ces condylomes ne présentent pas de risque de cancer. Pour les verrues, le traitement sera local ou chirurgical. Le suivi peut être nécessaire ou pas en fonction du nombre de condylomes à traiter. La périodicité des suivis est fixée par le dermatologue. Les condylomes végétants récidivent souvent.\n\nUne lésion précancéreuse nécessite des examens complémentaires : colposcopie et biopsies si néessaire. Le suivi se fait par des spécialistes.\n\nLes condylomes plans seront traités chirurgicalement. En cas de lésions cancéreuses ou pré cancéreuses, la prise en charge est du ressort du gynécologue pour les lésions du col de l’utérus, de l’ORL pour la localisation oro-pharyngée ou du proctologue pour la localisation anale.\nPrévention et vaccination\n\nPréservatif\n\nLe port du préservatif est recommandé y compris pour la fellation. Cependant, comme le HPV peut se transmettre par les attouchements, les préservatifs diminuent mais n’annulent pas le risque de transmission.\n\nVaccination\n\nLa vaccination est recommandée pour les jeunes filles et garçons entre 9 et 13 ans et en rattrapage de 14 à 19 ans.\n\nLes hommes ayant des relations sexuelles avec des hommes (HsH) peuvent être vaccinés jusqu’à l’âge de 26 ans inclus,\n\nLe vaccin est gratuit dans les CeGIDD et dans certains centres de vaccination. En ville il est pris en charge à 65% sur prescription médicale.\n\nGardasil 9® : toute vaccination commencée avec l\'un de ces vaccins doit être menée à son terme avec le même vaccin.\nGardasil® n\'est plus commercialisé depuis le 1er janvier 2021.\n\nGardasil 9® offre une protection plus large contre les HPV 6, 11, 16, 18, 31, 33, 45, 52 et 58. Il ne contient aucun germe vivant.\n\nIl est indiqué pour la prévention des :\n\n    lésions précancéreuses et cancers du col de l’utérus, de la vulve, du vagin et de l’anus,\n    verrues génitales (condylomes acuminés) dues à des types d’HPV spécifiques.\n\nLa vaccination ne se substitue pas au dépistage des lésions précancéreuses et cancéreuses du col de l’utérus par le frottis cervico-utérin, y compris chez les femmes vaccinées.\n\nLa vaccination est d’autant plus efficace que les personnes n’ont pas encore été exposées au risque d’infection par le HPV.'),
+(1, 18, 'Les mycoplasmes, c’est quoi ?', 'Les mycoplasmes sont des bactéries. Si de nombreuses espèces de mycoplasmes sont pathogènes pour les animaux, seulement 4 peuvent l’être pour l’homme.\n\nCes mycoplasmes sont responsables :\n\n    d’infections pulmonaires : Mycoplasma pneumonia,\n    d’infections génitales : Mycoplasma genitallium (Mg), Mycoplasma hominis (Mh), Ureaplasma urealitycum (Uu).\n\nLes infections à mycoplasme sont prises en compte de façon relativement récente. Décrites pour la 1ère fois en 1980, leur réelle place dans les IST n’est pas encore clairement définie :\n\n    Mycoplasma hominis et Ureaplasma urealitycum : leur pathogénie est débattue.\n    Mycoplasma genitalium : c’est le seul qui est clairement pathogène.\n\nTransmission des mycoplasmes\n\nTransmission sexuelle :\n\nSeul Mycoplasma genitalium est considéré comme responsable d’IST. Ce n’est pas le cas pour Mycoplasma hominis et Ureaplasma urealyticum qui se trouvent habituellement dans les voies génitales.\n\nTransmission mère-enfant : pendant la grossesse ou infection lors de l’accouchement.\nSymptômes et complications\n\nLes mycoplasmes humains peuvent provoquer des symptômes lorsqu’ils prolifèrent en abondance car ils provoquent alors un déséquilibre de la flore naturelle génitale. Chez l’homme comme chez la femme l’association des mycoplasmes avec un autre agent pathogène (Chlamydiae Trachomatis, gonorrhée) est fréquente.\n\nHomme\n\n    urétrites non gonococciques, plutôt subaiguës,\n    avec brûlures mictionnelles (en urinant),\n    écoulement matinal peu purulent et généralement peu abondant.\n\nFemme\n\nMycoplasma genitalium est responsable d’urétrite ou cystite, voire d’infections urinaires à répétition.\n\nUn ou plusieurs symptômes peuvent être présents :\n\n    mictions fréquentes ou sensation d’avoir besoin d’uriner fréquemment,\n    sensation de brûlure lors de la miction,\n    écoulement vaginal,\n    douleur abdominale,\n    douleur vaginale,\n    dyspareunie (douleur lors des rapports sexuels),\n    saignements vaginaux anormaux à la suite des relations sexuelles, après la ménopause, entre les règles.\n\nComplications\n\nLes complications sont rares mais le rôle des mycoplasmes dans certaines stérilités tubaires est évoqué.\nDépistage et diagnostic des mycoplasmes\n\nL’ECBU (analyse d\'urines standard) ne permet pas de dépister les mycoplasmes.\n\nMycoplasma genitalium\n\nSeule la PCR (sur urines, prélèvements vaginal, anal et pharyngé) est utilisable (culture quasi impossible). Des PCR spécifiques et multiplex sont désormais commercialisées. La sérologie par prise de sang n’a pas d’intérêt en dépistage ou en diagnostic.\n\nMycoplasma hominis et Ureaplasma urealyticum\n\nLeur caractère non pathogène chez la femme et leur responsabilité discutée chez l’homme incitent à ne pas rechercher ces mycoplasmes en routine. La sérologie (prise de sang) n’a pas d’intérêt ni en dépistage, ni en diagnostic.\nTraitement des mycoplasmes\n\nMycoplasma genitalium\n\nSeuls les patients symptomatiques sont traités.\n\n    1ère intention : Azithromycine (Zithromax® ou génériques),\n    2ème intention : Josamycine (Josacine® ou génériques),\n    En cas de résistance aux macrolides ou si l\'infection persiste infection persistante : Moxifloxacine (Izilox® ou génériques).\n\nMycoplasma hominis et Ureaplasma urealitycum\n\nDoxycycline (200 mg pendant 7 jours) ou azithromycine (Zithromax® ou génériques).\n'),
+(1, 19, 'Les morpions, c’est quoi ?', 'La pédiculose est une parasitose due aux poux. On distingue 3 pédiculoses : de la tête, du corps et du pubis, aussi appelée phtiriase pubienne.\n\nPhtirius pubis est un petit insecte, appelé classiquement « morpion » ou pou du pubis. C’est un insecte hématophage (il se nourrit de sang) qui vit accroché aux poils à proximité de la peau et pond ses œufs (les « lentes ») sur les poils. Même s’il aime beaucoup les poils du sexe, il arrive qu’il colonise d’autres zones pileuses comme les poils du torse, les aisselles ou la tête.\n\nDépistage\n\n    visuel (se reconnait facilement),\n    sur les poils, on peut retrouver les lentes, grises et bien accrochées quand elles sont vivantes ; blanches et facilement détachables quand elles sont mortes,\n    sur le slip on retrouve souvent des traces sanguinolentes marronnasses, d’allure un peu poudreuses, qui correspondent aux déjections du morpion (sang digéré).\n\nTransmission \n\nLa transmission des morpions pubiens est :\n\n    essentiellement sexuelle,\n    par contact direct avec des poils infectés.\n\nLe parasite peut rester vivant et infectant 24 heures en dehors du corps parasité (par exemple dans la literie).\n\nSymptômes\n\nEn général, on se rend compte de la présence de morpions à cause des démangeaisons (prurit).\n\nTraitement\n\n    Diméticone\n\nLe Diméticone est un pansement gastrique. Il est utilisé comme traitement mécanique (et non chimique) d’une pédiculose car il adhère à la surface du pou et l’asphyxie.\n\nSpécialités : Polysilane Upsa®, K.O. poux®\n\n    Pyréthrine\n\nLa Pyréthrine est un insecticide.\n\nSpécialités : Topiscab 5 % crème®, Item Anti Poux® shampooing, Parasidose® shampooing\n\n    Ivermectine\n\nSi résistance au traitement, il existe une alternative : l’Ivermectine utilisée dans le traitement des parasitoses comme la gale.\n\nSpécialités : Stromectol® comprimés et ses génériques, Soolantra® crème\n\n    Malathion (Arrêt de commercialisation en décembre 2018)\n\nSpécialités : Prioderm®, Para Plus®\n\nParfois, le rasage pubien est inévitable.\n\nPendant le traitement, il faut IMPÉRATIVEMENT :\n\n    changer la literie et le linge ayant été en contact,\n    les désinfecter avec un insecticide adapté (demander conseil au pharmacien),\n    laver le tout.\n\nLe traitement des partenaires doit être systématique.\n'),
+(1, 20, 'Une vaginose à Gardnerella, c’est quoi ?', 'Les vaginoses ne peuvent pas être considérées comme des IST car elles sont dûes à la multiplication excessive de certains microbes qui font normalement partie de la flore vaginale. Ces agents microbiens sont les suivants :\n\n    Candida Albicans (champignon) qui peut provoquer une mycose-candidose\n    Trichomonas Vaginalis (parasite protozoaire flagellé),\n    Gardnerella Vaginalis (bactérie).\n\nDans la mesure où cette bactérie est présente à l’état physiologique normal, on ne peut pas parler de transmission ou d’incubation.\nSymptômes\n\nFemme\n\n    douleurs parfois au cours des rapports sexuels,\n    démangeaisons,\n    associées à des pertes :\n        fluides,\n        peu abondantes,\n        adhérant aux parois vaginales,\n        dégageant une classique odeur de « poisson pourri ».\n\nEn présence de ces signes et en cas de grossesse, il faut consulter rapidement pour éviter des complications éventuelles.\n\nHomme\n\nMoins fréquente chez l’homme, l\'infection à Gardnerella, transmise lors de rapports sexuels avec une partenaire infectée, peut provoquer des urétrites, cystites (inflammation de la vessie), prostatites…\nDépistage\n\nClassiquement, un test particulier (dit « test à la potasse ») revient positif et l’analyse microscopique de la sécrétion retrouve des cellules caractéristiques.\n\nA l’examen microscopique direct on retrouve l’aspect typique de cellules vaginales recouvertes de petits bacilles.\nTraitement\n\nLe traitement se résume souvent à la prescription d’un traitement antibactérien, en général le métronidazole ou le tinidazole.'),
+(1, 21, 'La gonococcie, c’est quoi ?', 'La gonococcie (également appelée blennorragie, gonorrhée ou encore « chaude pisse ») est une infection d’origine bactérienne.\n\nElle provoque des brûlures et/ou un écoulement jaune par la verge, le vagin ou l\'anus.\n\nCette infection se transmet lors de rapports sexuels, bucco-génitaux, vaginaux ou anaux.\n\nLe traitement se fait par prise d\'antibiotiques adaptés.\nTransmission\n\nLa transmission de la gonococcie est très facile et peut se faire au cours de pénétrations vaginales, anales ou buccales.\n\nUn contact sexuel sans pénétration peut suffire à une contamination.\n\nLe nombre de diagnostics d’infection à gonocoque rapportés a augmenté de 53% entre 2016 et 2018. Cette augmentation s’observe chez les HSH (hommes ayant des relations sexuelles avec des hommes) (+58%) et chez les hétérosexuels (+29%).\n\nLes personnes diagnostiquées pour une gonococcie sont majoritairement des HSH (71%).\n\n(Source : Bulletin de santé publique IST - novembre 2019)\nSymptômes\n\nIl s’agit essentiellement d’urétrite (inflammation de l\'urètre), du moins dans un premier temps.\n\nL\'incubation silencieuse dure de 2 à 7 jours.\n\nChez l\'homme :\n\nIl n\'y a pas forcément de symptômes.\n\nLes symptômes suivants peuvent apparaître :\ndes douleurs à la miction, à l’éjaculation,\nun écoulement purulent jaune-verdâtre qui survient tout au long de la journée (taches dans le slip, quand ça ne colle pas carrément).\n\nL’infection ascendante peut toucher :\nun testicule (orchite),\nl’épididyme (épididymite),\nla prostate (prostatite).\n\nChez la femme :\n\nLa plupart du temps l’infection ne provoque pas de symptômes (70% des cas), ou bien des symptômes peu caractéristiques.\n\nQuand elle est symptomatique, l\'infection se caractérise par :\npertes vaginales verdâtres,\nparfois associées à une urétrite (avec un écoulement du méat urétral).\n\nL’infection ascendante est à l’origine d’une endométrite (infection de l’utérus) ou d’une salpingite (inflammation des trompes), douloureuses et provoquant de la fièvre.\n\nChez l\'homme et la femme :\nLocalisations ano-rectales : elles sont souvent asymptomatiques. On peut néanmoins retrouver un écoulement purulent anal et des douleurs à la défécation (ou de fausses envies),\nL’oropharyngite gonococcique est également le plus souvent asymptomatique,\nLa conjonctivite est possible (transmission via la main).\n\nSi l’infection n’est pas soignée il existe des risques de stérilité, surtout chez la femme.\nDépistage - Diagnostic\n\nLe diagnostic est généralement clinique, c\'est-à-dire en fonction des symptômes :\nfortes douleurs en urinant ou à l\'éjaculation (\"lames de rasoir\"),\nécoulement jaune-verdâtre.\n\nLe diagnostic repose sur des analyses biologiques. Attention : l\'ECBU  (Examen Cytobactériologique Urinaire) ne permet pas de poser un diagnostic pour le gonocoque.\n\nLes prélèvements sont effectués de préférence le matin avant l’émission d’urine ou la toilette génito-urinaire mais se font également dans la journée :\nchez l’homme : sur le 1er jet d’urine, avec également un auto prélèvement anal pour les personnes pratiquant le sexe anal. L’écouvillonnage ne se pratique plus, il est très douloureux et n’a pas d’intérêt,\nchez la femme : à partir des sécrétions cervicales, produites par le col de l\'utérus, par écouvillonage endo-vaginal ou auto prélèvement et par auto prélèvement anal pour les personnes pratiquant le sexe anal,\nchez les deux : prélèvement pharyngé (gorge).\n\nEn pratique, dans les CeGGID et centres de santé, chez les sujets asymptomatiques le diagnostic se fait :\nchez l’homme : par PCR sur le 1er jet d’urine,\nchez la femme : par PCR sur l’auto écouvillonnage vulvo-vaginal.\n\nEn cas de test positif, une culture devrait être pratiquée pour effectuer un antibiogramme mais cela ne se fait pas de façon systématique.\n\nOn pratique de plus en plus souvent des tests duplex (mixtes) pour la gonorrhée et les chlamydiae et parfois des test triplex si on ajoute les mycoplasmes.\nTraitement\n\nAujourd’hui, le traitement de la gonococcie repose principalement sur une injection d\'antibiotique Ceftriaxone (Rocéphine®), Gentamicine ou Ciprofloxacine selon les cas.\n\nLa personne est considérée comme guérie (et donc non contaminante) une semaine après l’injection.\n\nRecommandations :\n\n    contrôle clinique au bout d\'une semaine, mais il se fait rarement s\'il n\'y a plus de symptômes,\n    contrôle biologique au bout de 5 semaines.\n\nLe traitement systématique des partenaires permet d’interrompre la chaîne de transmission.\n\nLe traitement permet la guérison complète mais ne protège pas d’une nouvelle infection.\n\nUn traitement actif sur Chlamydiae doit être systématiquement associé au traitement de la gonococcie.\n\nLorsqu\'une personne présente un écoulement urétral après un rapport sexuel non protégé (généralement de 2 à 7 jours après), et sans attendre les résultats d’analyses, il est recommandé de prescrire un traitement efficace sur chlamydiae et gonocoque (doxycycline 100 mg x 2 pendant 7 jours et Rocéphine® 500 mg dose unique) et de réaliser un dépistage de toutes les IST, dont chlamydiae et gonocoque.');
+INSERT INTO `faq_question` (`categoryId`, `pos`, `question`, `answer`) VALUES
+(1, 22, 'Les chlamydiae, c’est quoi ?', 'L’infection à Chlamydia Trachomatis, due à une bactérie, est extrêmement répandue, en particulier chez les moins de 25 ans.\n\nElle peut se développer en l’absence de tout symptôme. Elle touche les hommes comme les femmes et peut entraîner de graves complications.\n\nC’est l’une des premières causes de stérilité en France. Son diagnostic est souvent tardif et survient parfois au-delà du délai d’incubation.\nTransmission\n\nLes chlamydiae se transmettent :\n\n    par pénétration vaginale ou anale, fellation et plus rarement par le cunnilingus,\n\n    par transmission mère-enfant lors de l’accouchement (occasionnant des conjonctivites et des pneumopathies tardives).\n\nCette infection est extrêmement répandue. En 2018, 133 000 infections à chlamydia ont été diagnostiquées en France. Le taux national de diagnostics est de 202 pour 100 000 habitants de 15 ans et plus (285 pour 100 000 chez les femmes et 112 pour 100 000 chez les hommes).\n\nPour les infections dépistées en CeGIDD, la Guadeloupe a le taux de positivité le plus élevé de l’Outre-mer (13,8 %) et la région Nouvelle-Aquitaine le taux de positivité le plus élevé de métropole (8,5 %).\nSymptômes\nLa contamination passe inaperçue chez 60 à 70% des femmes. Les symptômes n\'apparaissent ensuite que chez 6% des femmes et 11% des hommes. Cette absence de symptômes a souvent pour conséquence une découverte tardive de l’infection. Les symptômes suivants peuvent apparaître : Chez la femme :\n\n    des pertes,\n    des douleurs du bas ventre (pelviennes),\n    des douleurs urinaires, avec un col utérin irrité saignant au contact,\n    des infections pharyngées transitoires souvent sans symptômes.\n\nLa complication majeure chez la femme est la salpingite (inflammation d’une ou des 2 trompes utérines) dont les conséquences sont la stérilité tubaire et les grossesses extra-utérines. Les symptômes de la salpingite sont essentiellement :\n\n    des douleurs du bas ventre (douleurs pelviennes) qui peuvent être aiguës ou chroniques, permanentes ou intermittentes ou se limiter à une sensation désagréable ou de lourdeur localisée dans le bas ventre. Les douleurs sont généralement augmentées par les rapports sexuels,\n    une fièvre discrète,\n    des pertes vaginales inhabituelles ou malodorantes.\n\nChez l’homme :\n\n    Urétrite. Les symptômes apparaissent de 2 à 14 jours après le contact infectant : écoulement avec prurit ou douleur/inconfort urinaire parfois intermittent. L’écoulement est surtout matinal, pas très limpide (mais beaucoup moins purulent que dans une gonococcie) avec éventuellement des brûlures urinaires.\n    Infections anorectales fréquemment asymptomatiques et parfois accompagnées de prurit (démangeaisons), ténesme (fausses envies et envie constante d’aller à la selle ou d’uriner) et écoulement.\n    Infections pharyngées transitoires souvent asymptomatiques.\n\nDépistage\nLe diagnostic de référence aujourd’hui repose sur la biologie moléculaire par PCR. La sérologie (prise de sang) est inutile en dépistage. Chez l’homme :\n\n    ayant une urétrite : PCR sur l’écoulement ou le 1er jet d’urine au moins 1 heure après la dernière miction\n    asymptomatique : PCR sur le 1er jet d’urine.\n\nChez la femme :\n\n    ayant une cervicite (inflammation du col) : PCR sur écouvillon par prélèvement à l’endocol (partie intérieure du col) associée au mieux aux pourtours du méat urétral (ou par auto-prélèvement vulvo-vaginal),\n    asymptomatique : PCR sur écouvillon par auto-prélèvement endo-vaginal.\n\nHomme/Femme : PCR sur écouvillon par prélèvement à l’anus et au pharynx.\nTraitement\n\nLes chlamydiae sont traitées par des antibiotiques : Doxycycline voie orale ou Azithromycine voie orale.\n\nLa personne n’est plus contaminante une semaine après la fin du traitement.\n\nLe traitement systématique des partenaires des deux derniers mois est fortement recommandé.'),
+(1, 23, 'Comment diagnostiquer une IST ?', 'Les infections sexuellement transmissibles peuvent provoquer des symptômes tels que :\n\ndes brûlures en urinant, surtout chez l\'homme avec la blennorragie ou les chlamydioses ;\n\ndes pertes vaginales avec les trichomonases, les vaginoses à Gardnerella, parfois avec les chlamydioses ;\n\ndes boutons au niveau de la région des organes sexuels, avec l\'herpès, ou même sur l\'ensemble du corps, avec la syphilis ;\n\ndes ulcérations,qui ressemblent à une plaie, des organes génitaux, comme dans la syphilis ou l\'herpès ;\n\ndes démangeaisons, avec l\'herpès, parfois avec les condylomes, toujours avec les morpions ;\n\ndes espèces de verrues dans le cas des condylomes.\n\nQuand on a ces signes, il est important de consulter rapidement un médecin qui fera le diagnostic et proposera un traitement. Si vous allez consulter un médecin en ville, expliquez-lui les risques auxquels vous pensez avoir été exposé-e, et décrivez-lui vos symptômes. Il pourra vous proposer des analyses ou un traitement.\n\nIl arrive aussi que certaines IST soient asymptomatiques, c\'est-à- dire qu\'elles ne présentent aucune manifestation clinique. D\'où l\'importance de réaliser un check-up régulier.\n\nEst-ce qu\'on peut me dépister toutes les IST en même temps ?\n\nLes infections sexuellement transmissibles qui peuvent se dépister par une prise de sang sont : l\'infection par le VIH, l\'hépatite B et la syphilis, à condition de bien respecter le délai entre le risque de transmission et la prise de sang. Certaines maladies ne seront découvertes que lors d\'un examen médical (le médecin observe les lésions et peut faire le diagnostic). Les chlamydioses peuvent maintenant être recherchées par une analyse d\'urines.\n\nPour les femmes, il est important de bénéficier régulièrement d\'un examen gynécologique qui permettra de rechercher les condylomes à l\'origine des cancers du col de l\'utérus.\n\nLes CeGIDD (Centre Gratuit d’Information, de Dépistage et de Diagnostic) ne peuvent faire parfois que les tests du VIH, de l\'hépatite B et de l\'hépatite C. Certains de ces centres sont également habilités à traiter l\'ensemble des IST, gratuitement, mais cela ne sera pas forcément anonyme.'),
+(1, 24, 'L’anulingus c’est risqué pour le VIH ?', 'L\'anulingus n\'est pas une pratique à risque pour le VIH. On ne peut pas avoir le VIH en léchant l\'anus d\'une personne séropositive.\n\nEn revanche l’anulingus peut présenter un risque pour d\'autres maladies, notamment la syphilis, la blennorragie, l\'hépatite A et divers microbes intestinaux.\n\nN\'oubliez pas : il existe un vaccin pour l\'hépatite A mais aussi pour l\'hépatite B.'),
+(1, 25, 'Quels sont les risques lors d’un cunnilingus ?', 'Le cunnilingus n\'est pas une pratique à risque pour le VIH.\n\nUne femme qui reçoit un cunnilingus ne peut pas être contaminée car la salive de son-sa partenaire ne transmet pas le VIH.\n\nUne personne qui fait un cunnilingus peut être contaminée par certaines IST comme la syphilis ou la blennorragie.'),
+(1, 26, 'Pénétration anale sans capote : quels risques ?', 'La pénétration anale (sodomie) sans préservatif peut donner lieu à la transmission du VIH et/ou d’infections sexuellement transmissibles (IST) si l’un des deux partenaires est infecté (actif ou passif).\n\nA noter : Quand une personne séropositive sous traitement a une charge virale indétectable depuis plus de six mois, et qu\'elle n\'a pas d\'IST, le VIH ne peut plus se transmettre (Voir dossier Tout savoir sur le TasP)\n\nSi je suis pénétré-e (\"passif.ve\" ou \"réceptif.ve\")\nLe VIH peut être transmis aux 2 partenaires lors d\'une pénétration anale non protégée par un préservatif si l’un des partenaires est porteur de ce virus et que sa charge virale n\'est pas indétectable.\n\nL’éjaculation dans l’anus augmente le risque de transmission du VIH pour la personne pénétrée.\n\nSi je pénètre (\"actif\" ou \"insertif\")\nLe VIH peut être transmis aux 2 partenaires lors d\'une pénétration anale non protégée par un préservatif si l’un des partenaires est porteur de ce virus et que sa charge virale n\'est pas indétectable.\n\nSi l’un des partenaires (ou les deux) est porteur d’une infection sexuellement transmissible (IST), le risque de transmission du VIH est plus important.\n\nPréservatifs\nLe préservatif - interne ou externe - protège de la contamination par le VIH lorsqu’il est utilisé dès le début de la pénétration et jusqu’au retrait.\n\nAttention : Les préservatifs externes sont habituellement lubrifiés, mais il faut toujours rajouter du lubrifiant (hydrosoluble ou silicone) en particulier pour la pénétration anale et ne pas hésiter à en remettre pour éviter les risques de rupture.'),
+(1, 27, 'Le trichomonas c’est quoi ?', 'L’infection vaginale à Trichomonas Vaginalis ne provoque pas de symptômes chez de nombreuses personnes : jusqu\'à 50% des cas sont asymptomatiques, surtout chez les hommes.\n\nCe parasite a un rôle pathogène :\n\n    chez la femme, l’infection vaginale à Trichomonas Vaginalis représente environ 30% des vulvo-vaginites et 50% des vaginites avec pertes,\n    chez l’homme, Trichomonas vaginalis est responsable de 30% des urétrites, en dehors de celles dues au gonoccoque.\n\nLa trichomonase est rarement dangereuse, mais ses symptômes peuvent être très désagréables.\n\nLe délai d\'incubation est de 4 à 28 jours, avec une moyenne de 7 jours.\n\nSymptômes\n\n    Chez l\'homme, l\'infection est asymptomatique dans 90% des cas. Le plus souvent l’homme transporte les parasites et les transmet, mais ne présente aucun symptôme. Quand il y en a, il s\'agit d\'une urétrite discrète avec éventuellement un suintement et des démangeaisons.\n    Chez la femme, les symptômes sont plus bruyants :\n        pertes vaginales abondantes, spumeuses (qui font des bulles), d’une couleur jaune-verdâtre, très malodorantes,\n        irritation vulvaire,\n        dyspareunie (douleur pendant les rapports sexuels), brûlures urinaires.\n\nTransmission\n\nLa transmission est sexuelle.\n\nLes personnes ayant de nombreux partenaires sexuels, ou ayant des rapports avec une personne aux multiples partenaires, sont  plus susceptibles de contracter cette infection. Il faut donc se protéger.\n\nDépistage\n\nUne analyse d\'urine classique type ECBU ne permet pas le dépistage.\n\nLe dépistage se fait par un examen (PCR) :\n\n    chez l\'homme : sur le 1er jet urinaire ;\n    chez la femme : sur un prélèvement cervico-vaginal (privilégié) ou sur le 1er jet urinaire.\n\nL’examen au microscope des pertes vaginales (leucorrhées) ou urétrales se fait de moins en moins.\n\nTraitement\n\nMétronidazole ou Secnidazole par voie orale.'),
+(1, 28, 'La donovanose, c’est quoi ?', 'La donovanose (granulome inguinal ou granulome vénérien) est due à une bactérie, la Klebsiella granulomatis (ou Calymmatobacterium granulomatis).\n\nCette maladie rare sévit surtout en Inde et Asie du Sud-Est, au Brésil, en Afrique du Sud et en Australie centrale. On la retrouve aussi régulièrement en Guyane française et dans les Caraïbes.\n\nEnviron 100 cas sont signalés par an aux Etats-Unis, principalement chez des personnes revenant de régions où la maladie est courante. En Europe, 19 cas ont été détectés au Royaume Uni en 2016, 30 en 2019, avant de connaître une baisse en 2020, probablement grâce aux confinements, et de regagner du terrain en 2021.\n\nLes cas survenant au Royaume-Uni ou aux Etats-Unis sont donc généralement dus à des relations sexuelles non protégées (génitale, anale et plus rarement orale) dans des endroits où se trouve Klebsiella granulomatis.\n\nLa maladie est plus fréquente chez l’homme que chez la femme : 2 hommes pour 1 femme.\n\nSource : Société Française de Dermatologie\nSymptômes\n\nSymptômes\n\nDe petits nodules indolores apparaissent environ 10 à 40 jours au point d’inoculation après le contact avec la bactérie. Plus tard, les nodules éclatent, aboutissant à la création d’ulcérations ouvertes et suintantes.\n\nLes ulcères génitaux ne sont pas douloureux, et peuvent se confondre avec ceux de la syphilis.\n\nAu cours de son évolution terminale, l’infection se propage, mutilant les tissus infectés et aboutissant à la destruction des tissus internes et externes, avec écoulement de mucus et de sang. En l’absence de traitement l’infection continue à détruire les tissus.\n\nLe caractère destructeur de la donovanose augmente le risque de surinfection par d’autres microbes pathogènes.\n\nChez l\'homme, les localisations sont principalement génitales, exceptionnellement anales (chez les HsH) ou inguinales, raisons pour lesquelles mieux il vaut privilégier le terme de donovanose que celui de granulome inguinal.\n\nChez la femme, les localisations sont le plus souvent vulvaires ou périnéales, plus rarement anales, inguinales, vaginales ou cervicales.\n\nSans traitement antibiotique, l’infection bactérienne peut s’étendre localement et entrainer parfois des septicémies.\n\nComme toutes les IST, la donovanose augmente le risque de contamination par le VIH.\n\nIl existe également, en cas d’immunodépression profonde, un risque de  surinfection par d’autres germes et de destruction de tissu plus étendues.\nTransmission\n\nLa transmission sexuelle peut avoir lieu en cas de contact avec les plaies ouvertes au cours de rapports sexuels oraux, vaginaux ou anaux.\n\nToute personne ayant eu un contact sexuel avec le patient source dans les 40 jours avant l’apparition des lésions cliniques doit être traitée.\n\nLe seul mode de prévention actuel reste le préservatif.\nDépistage et traitement\n\nLe diagnostic clinique peut être posé par des médecins expérimentés à la simple vue des ulcères (lésions).\n\nIl peut aussi se faire lors d\'analyses avec une mise en évidence au microscope des \"corps de Donovan\" dans le frottis d’une ulcération génitale ou périnéale.\n\nLe traitement par antibiotique doit être pris pendant 21 jours ou jusqu\'à guérison selon le médicament prescrit.'),
+(1, 29, 'La donovanose, c’est quoi ?', 'Une nouvelle IST \"mangeuse de chair\" aurait-elle fait son apparition récemment ? En fait, pas vraiment.\n\nLa donovanose puisque tel est son nom, est aussi connue sous l\'appellation de granulome inguinal, ou granulome vénérien. Cette maladie est due à une bactérie, la Klebsiella granulomatis (ou Calymmatobacterium granulomatis).\n\nCette maladie rare sévit surtout en Inde et Asie du Sud-Est, au Brésil, en Afrique du Sud et en Australie centrale. On la retrouve aussi régulièrement en Guyane française et dans les Caraïbes. Environ 100 cas sont signalés par an aux Etats-Unis, principalement chez des personnes revenant de régions où la maladie est courante. En Europe, 19 cas ont été détectés au Royaume Uni en 2016, 30 en 2019. On est donc très loin d\'une invasion de zombies comme le laisseraient penser certains articles de journaux qui viennent d\'apparaître.\n\nComment ça se présente ?\n\nDe petits nodules indolores apparaissent environ 10 à 40 jours au point d’inoculation après le contact avec la bactérie. Si l\'infection n\'est pas traitée, les nodules éclatent, aboutissant à la création d’ulcérations ouvertes et suintantes. Ces ulcères génitaux ne sont pas douloureux mais ils peuvent se confondre avec ceux de la syphilis. L’infection peut continuer à détruire les tissus mais uniquement en l\'absence de traitement.\n\nComment ça se dépiste ?\n\nLe diagnostic clinique peut être posé par des médecins expérimentés à la simple vue des ulcères (lésions).\n\nIl peut aussi se faire lors d\'analyses avec une mise en évidence au microscope des \"corps de Donovan\" dans le frottis d’une ulcération génitale ou périnéale.\n\nComment ça se traite ?\n\nLe traitement par antibiotique doit être pris pendant 21 jours ou jusqu\'à guérison selon le médicament prescrit.');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `helpfulOrganization`
+--
+
+CREATE TABLE `helpfulOrganization` (
+  `id` int(4) NOT NULL,
+  `name` text NOT NULL,
+  `url` text DEFAULT NULL,
+  `imgUrl` text DEFAULT NULL,
+  `description` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `helpfulOrganization`
+--
+
+INSERT INTO `helpfulOrganization` (`id`, `name`, `url`, `imgUrl`, `description`) VALUES
+(1, 'Nous Toutes', 'https://www.noustoutes.org/', 'https://www.noustoutes.org/wp-content/uploads/2020/09/cropped-Blanc-sur-violet.png', 'Organisation féministe nationale. Organise de très grandes manifestations nationales. Offre des ressources (notamment des quiz), dispense des formations…');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `quiz`
+--
+
+CREATE TABLE `quiz` (
+  `id` int(4) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `title` text NOT NULL,
+  `description` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `quiz`
+--
+
+INSERT INTO `quiz` (`id`, `name`, `title`, `description`) VALUES
+(1, 'test', 'Quiz de test', 'C’est pour tester.');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `quiz_answer`
+--
+
+CREATE TABLE `quiz_answer` (
+  `quizId` int(4) NOT NULL,
+  `questionPos` int(4) NOT NULL,
+  `pos` int(4) NOT NULL,
+  `name` text DEFAULT NULL,
+  `content` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `quiz_answer`
+--
+
+INSERT INTO `quiz_answer` (`quizId`, `questionPos`, `pos`, `name`, `content`) VALUES
+(1, 1, 1, 'A', 'Oui'),
+(1, 1, 2, 'B', 'Non');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `quiz_question`
+--
+
+CREATE TABLE `quiz_question` (
+  `quizId` int(4) NOT NULL,
+  `pos` int(4) NOT NULL,
+  `title` text DEFAULT NULL,
+  `content` text NOT NULL,
+  `explanation` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `quiz_question`
+--
+
+INSERT INTO `quiz_question` (`quizId`, `pos`, `title`, `content`, `explanation`) VALUES
+(1, 1, 'Quoi ?', 'Répondez !', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `testimony`
+--
+
+CREATE TABLE `testimony` (
+  `id` int(4) NOT NULL,
+  `title` text NOT NULL,
+  `author` text DEFAULT NULL,
+  `date` date NOT NULL,
+  `content` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `testimony`
+--
+
+INSERT INTO `testimony` (`id`, `title`, `author`, `date`, `content`) VALUES
+(1, 'Expérience de préadolescent', 'Sylvain', '2022-12-02', 'Quand j’avais 10 ans, un de mes cousins m’a fortement incité à me mettre à la masturbation. Alors je l’ai fait. L’année suivante, il a voulu que nous ayons quelques petites expériences homosexuelles ensemble. Apparemment, il en avait de plus conséquentes avec certains de ses camarades de classe. Je ne voulais pas m’y mettre, mais il insistait, il insistait, disant que « c’est marrant »… Alors je finissais toujours par craquer (et ça le faisait rire), par manque de contre-arguments. Nous nous sommes ainsi fait quelques mini-pipes, nous nous sommes masturbés mutuellement… Plus souvent, nous nous sommes masturbés chacun de notre côté. Ce n’était pas agréable. Depuis, je suis obsédé par les femmes.'),
+(2, 'Test', NULL, '2022-02-28', 'Ceci');
+
+--
+-- Index pour les tables déchargées
+--
+
+--
+-- Index pour la table `article`
+--
+ALTER TABLE `article`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `definitions`
+--
+ALTER TABLE `definitions`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `faq_category`
+--
+ALTER TABLE `faq_category`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `faq_question`
+--
+ALTER TABLE `faq_question`
+  ADD PRIMARY KEY (`categoryId`,`pos`);
+
+--
+-- Index pour la table `helpfulOrganization`
+--
+ALTER TABLE `helpfulOrganization`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `quiz`
+--
+ALTER TABLE `quiz`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `name` (`name`);
+
+--
+-- Index pour la table `quiz_answer`
+--
+ALTER TABLE `quiz_answer`
+  ADD PRIMARY KEY (`quizId`,`questionPos`,`pos`);
+
+--
+-- Index pour la table `quiz_question`
+--
+ALTER TABLE `quiz_question`
+  ADD PRIMARY KEY (`quizId`,`pos`) USING BTREE;
+
+--
+-- Index pour la table `testimony`
+--
+ALTER TABLE `testimony`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT pour les tables déchargées
+--
+
+--
+-- AUTO_INCREMENT pour la table `article`
+--
+ALTER TABLE `article`
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT pour la table `definitions`
+--
+ALTER TABLE `definitions`
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
+--
+-- AUTO_INCREMENT pour la table `faq_category`
+--
+ALTER TABLE `faq_category`
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT pour la table `helpfulOrganization`
+--
+ALTER TABLE `helpfulOrganization`
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT pour la table `quiz`
+--
+ALTER TABLE `quiz`
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT pour la table `testimony`
+--
+ALTER TABLE `testimony`
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- Contraintes pour les tables déchargées
+--
+
+--
+-- Contraintes pour la table `faq_question`
+--
+ALTER TABLE `faq_question`
+  ADD CONSTRAINT `categoryId` FOREIGN KEY (`categoryId`) REFERENCES `faq_category` (`id`) ON UPDATE CASCADE;
+
+--
+-- Contraintes pour la table `quiz_answer`
+--
+ALTER TABLE `quiz_answer`
+  ADD CONSTRAINT `questionId` FOREIGN KEY (`quizId`,`questionPos`) REFERENCES `quiz_question` (`quizId`, `pos`) ON UPDATE CASCADE;
+
+--
+-- Contraintes pour la table `quiz_question`
+--
+ALTER TABLE `quiz_question`
+  ADD CONSTRAINT `quizId` FOREIGN KEY (`quizId`) REFERENCES `quiz` (`id`) ON UPDATE CASCADE;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
