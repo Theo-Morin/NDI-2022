@@ -8,12 +8,14 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './components/shared.module';
 import { FooterComponent } from './core/components/footer/footer.component';
 import { DonsComponent } from './pages/dons/dons.component';
+import { GameComponent } from './pages/game/game.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FooterComponent,
-    DonsComponent
+    DonsComponent,
+    GameComponent
   ],
   imports: [
     BrowserModule,

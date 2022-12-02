@@ -8,7 +8,7 @@ import {Router} from '@angular/router';
 })
 export class AppComponent implements OnInit {
   keys: string = ""
-  keyBinding: string = "home"
+  keyBinding: string = "vih"
 
 
   constructor(private router: Router) {}
@@ -18,7 +18,7 @@ export class AppComponent implements OnInit {
     this.keys += event.key;
     if (this.keys.length === this.keyBinding.length) {
       if (this.keys === this.keyBinding) {
-        this.router.navigate(['/home']);
+        this.router.navigate(['/game']);
       }
       this.keys = this.keys.substr(1)
     }
@@ -30,7 +30,7 @@ export class AppComponent implements OnInit {
       audio.src = "../../../assets/audio/sound.mp3";
       audio.load();
       audio.play();
-      window.alert("")
+      window.alert("WaW ! ça fait 30 minutes que tu es sur le site ! Tu dois bien l'aimer !");
     }, 1800000);
   }
 }

@@ -1,0 +1,15 @@
+<div class="game" (click)="outOfRange()">
+    <div class="game__score">{{score}}</div>
+    <h2 class="game__title" [class.started]="start">Vous êtes prêt ?<br/>Attrapez un maximum de contraception !</h2>
+    <div
+        class="shooter"
+        (click)="clickOn()"
+        [style.width.px]="width"
+        [style.height.px]="height"
+        [style.top.%]="top"
+        [style.left.%]="left"
+        [style.display]="start ? 'block' : 'none'"
+        [style.background-color]="stop? '#71D186': 'transparent'"
+        [style.background-image]="bgImg"
+    ></div>
+</div>
