@@ -1,0 +1,13 @@
+<div id="articles">
+  <h2>Les articles intéressants</h2>
+  <div class="articles" *ngFor="let article of articles">
+    <app-article
+      *ngIf="article"
+      [title]="article['title']"
+      [content]="article['content']"
+      [author]="article['author']"
+      [date]="article['date']"
+    ></app-article>
+  </div>
+</div>
+
