@@ -8,6 +8,7 @@
 - [Renseignez vos routes (version frontend)](documentation/routes/backend.md)
 
 ## Project Team
+- Les Outsiders
 
 ## Nos défis
 1) Easter Eggs
@@ -21,7 +22,7 @@
     - Tapez : `vih` sur votre clavier n'importe où et vous serez redirigés vers un jeu secret
 
 ## Le jour de l'événement
-Arrivée sur place **17h** - Fin de l'événement **6h**.
+Arrivée sur place **17h** - Fin de l'événement **8h**.
 
 **17h-18h30** : Debrief sur le projet et ce qu'on doit faire, ce qui est demandé, où on va, et surtout comment on le fait.  
 
