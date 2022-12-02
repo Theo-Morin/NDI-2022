@@ -8,7 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class DropdownComponent implements OnInit {
   @Input() title: string;
   @Input() content: string;
-  deploy: boolean = false;
+  @Input() deploy: boolean = false;
   constructor() { }
 
   ngOnInit(): void {

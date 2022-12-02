@@ -63,3 +63,11 @@
     top:50%;
     transform: translateY(-50%);
 }
+
+@media screen and (max-width: 1000px) {
+    .quiz {
+        h2 {
+            font-size: 20px;
+        }
+    }
+}

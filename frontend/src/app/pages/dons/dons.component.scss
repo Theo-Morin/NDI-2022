@@ -21,3 +21,12 @@ h1 {
     display: flex;
     justify-content: flex-end;
 }
+
+@media (max-width: 1000px) {
+    h1 {
+        font-size: 20px;
+    }
+    .dons {
+        padding:50px 10px;
+    }
+}

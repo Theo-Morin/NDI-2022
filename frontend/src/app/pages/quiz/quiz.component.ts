@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ButtonSize } from 'src/app/components/button/button.component';
+import { QuizService } from 'src/app/core/services/quiz.service';
 
 @Component({
   selector: 'app-quiz',
@@ -8,9 +10,23 @@ import { ButtonSize } from 'src/app/components/button/button.component';
 })
 export class QuizComponent implements OnInit {
   buttonSize = ButtonSize;
-  constructor() { }
+  quiz: any = [];
+
+  constructor(
+    private quizService: QuizService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
+    this.quizService.getList().subscribe((quizList) => {
+      this.quiz = quizList;
+      console.log(this.quiz);
+    });
+  }
+
+  goToQuiz(quiz: any) {
+    this.quizService.activeQuiz$.next(quiz);
+    this.router.navigateByUrl('/quiz/' + quiz.id);
   }
 
 }
