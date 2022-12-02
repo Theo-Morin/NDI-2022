@@ -15,7 +15,9 @@
 </div>
 
 <ng-template #endOfGame>
-    <div class="quiz__answer" *ngFor="let q of quiz">
-        <app-dropdown [title]="q.title" [content]="q.explanation? q.explanation: 'Aucune explication prévue.'" [deploy]="true"></app-dropdown>
+    <div class="quiz__content">
+        <div class="quiz__answer" *ngFor="let q of quiz">
+            <app-dropdown [title]="q.title" [content]="q.explanation? q.explanation: 'Aucune explication prévue.'" [deploy]="true"></app-dropdown>
+        </div>    
     </div>
 </ng-template>

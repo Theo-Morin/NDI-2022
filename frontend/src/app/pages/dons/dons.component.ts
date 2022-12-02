@@ -14,7 +14,6 @@ export class DonsComponent implements OnInit {
 
   valueChanged(event: any) {
     this.donValue = event;
-    console.log(this.donValue);
   }
 
   send() {

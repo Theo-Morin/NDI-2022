@@ -16,3 +16,12 @@
     margin: 0 auto;
   }
 }
+
+
+@media  (max-width: 1000px) {
+  .associations {
+    flex-direction: column;
+    gap: 0;
+    text-align: center;
+  }
+}

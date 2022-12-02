@@ -48,7 +48,6 @@ export class QuizContentComponent implements OnInit {
       }
       this.quizType = quizT;
       this.quizService.get(quizT.name).subscribe((quiz) => {
-        console.log("t", quiz.questions);
         this.quiz = quiz.questions;
         this.actualAnswer = this.quiz[0];
         this.actualAnswer.answers = this.quiz[0].answers;

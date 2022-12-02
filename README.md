@@ -17,6 +17,7 @@
         - 1€ : Redirection sur la vidéo Youtube "Salut à toi jeune entrepreneur"
     - Inspection du code : Logo de l'application
     - Attendez 30 minutes sur le site et vous aurez le droit à une surprise audio
+<<<<<<< Updated upstream
     - Dernière réponse cachée dans les Quiz, redirige vers une vidéo
 
 ## Le jour de l'évenement
@@ -56,3 +57,5 @@ Arrivée sur place **17h** - Fin de l'évenement **6h**.
 
 **6h** : Bonne nuit 😴
 - L'équpe : Direction dodo
+=======
+>>>>>>> Stashed changes
