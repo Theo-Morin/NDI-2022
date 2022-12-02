@@ -14,6 +14,8 @@ const QuizModule = () =>
 const ArticlesModule = () =>
   import("./pages/articles/articles.module").then((m) => m.ArticlesModule);
 
+const GlossaryModule = () =>
+  import("./pages/glossary/glossary.module").then((m) => m.GlossaryModule);
 
 const routes: Routes = [
   { path: "", redirectTo: "/home", pathMatch: "full" },
@@ -36,6 +38,10 @@ const routes: Routes = [
   {
     path: "articles",
     loadChildren: ArticlesModule,
+  },
+  {
+    path: "glossary",
+    loadChildren: GlossaryModule,
   }
 ];
 

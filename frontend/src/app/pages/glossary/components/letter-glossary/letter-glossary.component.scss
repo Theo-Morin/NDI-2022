@@ -1,0 +1,20 @@
+@import "src/styles/colors";
+
+.glossary-letter {
+  width: 100%;
+  padding: 10px;
+
+  .definitions {
+    padding-left: 16px;
+
+    p a {
+      color: black;
+      text-decoration: none;
+
+      &:hover {
+        color: $primary-color;
+        text-decoration: underline;
+      }
+    }
+  }
+}
