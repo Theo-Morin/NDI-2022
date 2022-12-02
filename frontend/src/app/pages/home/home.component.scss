@@ -1,9 +1,34 @@
-.section {
-    margin:40px 0;
+@import "../../../styles/colors";
+@import "../../../styles/fonts";
+@import "../../../styles/icons";
+
+.carousel {
+    position: relative;
+    height:calc(100% - 100px);
+    width: 100%;
+    background:pink;
+
+    &__content {
+        position: absolute;
+        text-align: left;
+        top: 10%;
+        left: 10%;
+        right:10%;
+        h1 {
+            margin:0;
+        }
+        p.content {
+            margin: 20px 0 0 0;
+        }
+    }
 }
 
+.section {
+    margin:50px 0;
+}
 
 .quiz {
+    padding:20px 0;
     &__content {
         text-align: center;
     }
@@ -15,4 +40,26 @@
         font-size: 24px;
         margin-bottom:35px;
     }
+}
+
+.chevron {
+    cursor:pointer;
+}
+
+.chevron-left {
+    height:40px;
+    width:40px;
+    position:absolute;
+    left:30px;
+    top:50%;
+    transform: rotate(180deg) translateY(-50%);
+}
+
+.chevron-right {
+    height:40px;
+    width:40px;
+    position: absolute;
+    right:30px;
+    top:50%;
+    transform: translateY(-50%);
 }
