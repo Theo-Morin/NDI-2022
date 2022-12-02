@@ -1,0 +1,17 @@
+@import "../../../../../styles/colors";
+
+.article {
+  width: 100%;
+  padding: 10px;
+
+  p.article-bottom {
+    text-align: right;
+    margin: 8px;
+  }
+
+  .horizontal-red-bar {
+    height: 4px;
+    width: 100%;
+    background-color: $secondary-color;
+  }
+}
