@@ -11,6 +11,9 @@ const HomeModule = () =>
 const QuizModule = () =>
   import("./pages/quiz/quiz.module").then((m) => m.QuizModule);
 
+const ArticlesModule = () =>
+  import("./pages/articles/articles.module").then((m) => m.ArticlesModule);
+
 
 const routes: Routes = [
   { path: "", redirectTo: "/home", pathMatch: "full" },
@@ -29,6 +32,10 @@ const routes: Routes = [
   {
     path: "dons",
     component: DonsComponent
+  },
+  {
+    path: "articles",
+    loadChildren: ArticlesModule,
   }
 ];
 
