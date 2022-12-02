@@ -7,7 +7,7 @@ if ($uc2 === null) {
 } else {
     $quiz = new Quiz($uc2);
     if ($quiz->mainInfo === null) {
-        die(json_encode(['error' => 'No such quiz']));
+        quitWithCodeAndJson(404, ['error' => 'No such quiz']);
     }
     $quizData = $quiz->mainInfo;
     $quizData->questions = [];

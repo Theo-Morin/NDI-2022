@@ -12,6 +12,6 @@ class Article {
     public static function create($title, $author, $date, $content, $isPinned = false) {
         $queryStr = 'INSERT INTO article(title, author, date, content, isPinned) VALUES (?, ?, ?, ?, ?)';
         $stmt = Database::getInstance()->prepare($queryStr);
-        $stmt->execute([$title, $author, $date, $content, $isPinned]);
+        return $stmt->execute([$title, $author, $date, $content, $isPinned]);
     }
 }

@@ -19,8 +19,7 @@ switch ($uc2) {
             
             if($token) {
                 $_SESSION['userToken'] = $token;
-                //http_response_code(200);
-                print json_encode(['success' => 'Logged in']);
+                echo json_encode(['success' => 'Logged in']);
             }
             else {
                 http_response_code(401);

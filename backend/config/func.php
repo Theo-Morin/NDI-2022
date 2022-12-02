@@ -60,7 +60,7 @@ function formatDate($date) {
  * @param [type] $date
  * @return void
  */
-function getHeure($date)
+function getHour($date)
 {
     $date = strtotime($date);
     $date = date('H \h i', $date);
@@ -102,4 +102,13 @@ function getTime($ok)
         $date = "Il y a " . $date . "s";
     }
     return $date;
+}
+
+function quitWithCodeAndJson($code, $data) {
+    http_response_code($code);
+    die(json_encode($data));
+}
+
+function getToday() {
+    return date('Y-m-d');
 }
