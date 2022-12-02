@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 @Injectable({
     providedIn: 'root'
 })
@@ -8,13 +9,13 @@ import { Observable } from 'rxjs';
 export class FaqService {
 
     constructor(
-        private http: HttpClient
+        private http: HttpClient,
     ) { }
 
     getCategories(): Observable<any> {
-        return this.http.get(env.url + '/faq/');
+        return this.http.get(environment.url + '/faq/');
     }
-    get(catNum: int): Observable<any> {
-        return this.http.get(env.url + '/faq/' + catNum + '/');
+    get(catNum: number): Observable<any> {
+        return this.http.get(environment.url + '/faq/' + catNum + '/');
     }
 }
