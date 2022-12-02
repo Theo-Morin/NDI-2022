@@ -1,0 +1,63 @@
+@import "src/styles/colors";
+
+header {
+  background-color: $secondary-color;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  color: #FFFFFF;
+
+  .title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    h2 {
+      margin: 0;
+    }
+
+    i.icon.logo {
+      width: 48px;
+      height: 48px;
+      display: block;
+      background-size: 48px;
+      background-image: url(~src/assets/img/logo.svg);
+    }
+  }
+
+  nav {
+    display: flex;
+    gap: 24px;
+
+    .link {
+      color: #FFFFFF;
+      text-decoration: none;
+      font-size: 24px;
+
+      &:hover {
+        cursor: pointer;
+        text-decoration: underline 3px;
+      }
+    }
+  }
+
+  p.hotline {
+    text-align: center;
+
+    a {
+      color: #FFFFFF;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline 2px;
+      }
+    }
+  }
+}
