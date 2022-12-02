@@ -51,7 +51,6 @@ export class GameComponent implements OnInit {
       this.score++;
       let gameDesign = Math.trunc(this.score/(this.level*2)) <= 4 && Math.trunc(this.score/(this.level)) >= 1 ? Math.trunc(this.score/(this.level)) : 1;
       this.bgImg = "url(../../../assets/img/jeu" + gameDesign + ".png)";
-      console.log(this.bgImg);
       if(this.score/this.level >= 1) {
 
         this.timeout = this.base_timeout - (this.score/this.level)*250;

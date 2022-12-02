@@ -8,7 +8,7 @@ import {Router} from '@angular/router';
 })
 export class AppComponent implements OnInit {
   keys: string = ""
-  keyBinding: string = "home"
+  keyBinding: string = "vih"
 
 
   constructor(private router: Router) {}
@@ -18,7 +18,7 @@ export class AppComponent implements OnInit {
     this.keys += event.key;
     if (this.keys.length === this.keyBinding.length) {
       if (this.keys === this.keyBinding) {
-        this.router.navigate(['/home']);
+        this.router.navigate(['/game']);
       }
       this.keys = this.keys.substr(1)
     }
