@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FaqService } from 'src/app/core/services/faq.service';
 
 @Component({
   selector: 'app-faq',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./faq.component.scss']
 })
 export class FaqComponent implements OnInit {
-
-  constructor() { }
+  faq: any = [];
+  constructor(
+    private faqService: FaqService,
+  ) { }
 
   ngOnInit(): void {
+    this.faqService.getCategories().subscribe((categories) => {
+      // this.faqService.get()
+    });
   }
 
 }

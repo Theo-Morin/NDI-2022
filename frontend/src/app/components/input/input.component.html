@@ -1,1 +1,1 @@
-<input [type]="type" [placeholder]="placeholder" [class]="class" [value]="value" (change)="valueChange.emit(value)">
+<input [type]="type" [placeholder]="placeholder" [class]="class" [(ngModel)]="value" (change)="valueChange.emit(value)">

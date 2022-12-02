@@ -1,0 +1,9 @@
+<div class="dons">
+    <h1>Pour nous soutenir, vous pouvez nous faire un don</h1>
+    <div class="dons__content">
+        <app-input type="number" (keyup.enter)="send()" [placeholder]="'Montant du don (En €)'" (valueChange)="valueChanged($event)"></app-input>
+        <div class="align-right">
+            <app-button fontWeight="600" (click)="send()">Faire un don</app-button>
+        </div>
+    </div>
+</div>

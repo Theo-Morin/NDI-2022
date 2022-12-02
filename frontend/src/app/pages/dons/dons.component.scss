@@ -1,0 +1,23 @@
+h1 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 30px;
+    text-align: center;
+}
+
+.dons {
+    padding:50px 0 50px 0;
+    min-height:60%;
+
+    &__content {
+        max-width: 1000px;
+        margin: 20px auto;
+    }
+}
+
+.align-right {
+    margin-top:20px;
+    display: flex;
+    justify-content: flex-end;
+}

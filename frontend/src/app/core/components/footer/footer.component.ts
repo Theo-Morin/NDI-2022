@@ -12,4 +12,7 @@ export class FooterComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  goToGodless() {
+    window.open('http://www.bible-en-ligne.net/', '_blank');
+  }
 }

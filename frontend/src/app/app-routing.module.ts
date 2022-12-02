@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { DonsComponent } from './pages/dons/dons.component';
 
 const AuthModule = () =>
   import("./pages/auth/auth.module").then((m) => m.AuthModule);
@@ -24,6 +25,10 @@ const routes: Routes = [
   {
     path: "quiz",
     loadChildren: QuizModule,
+  },
+  {
+    path: "dons",
+    component: DonsComponent
   }
 ];
 
