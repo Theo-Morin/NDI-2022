@@ -18,3 +18,14 @@
     }
   }
 }
+
+h3 {
+  color: $primary-color;
+  &::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: $primary-color;
+  }
+}
